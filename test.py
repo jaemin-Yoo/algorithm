@@ -1,6 +1,7 @@
-import sys
+from collections import deque
 
-input = sys.stdin.readline
+q = deque()
+q.append(list(1234))
 
-a, b, c = map(int, input().split())
-print(a**b%c)
+q.rotate
+print(q)
