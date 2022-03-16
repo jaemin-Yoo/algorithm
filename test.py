@@ -1,7 +1,2 @@
-from collections import deque
-
-q = deque()
-q.append(list(1234))
-
-q.rotate
-print(q)
+a, b = map(int, input().split())
+print(a+b)
