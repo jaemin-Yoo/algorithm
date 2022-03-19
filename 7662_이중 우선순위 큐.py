@@ -8,42 +8,37 @@ for _ in range(t):
     
     q = []
     xq = []
-    visited = []
-    for _ in range(k):
+    visited = [False for _ in range(k)]
+    for i in range(k):
         c, n = input().strip().split()
         n = int(n)
         
         if c == 'I':
-            heapq.heappush(q, n)
-            heapq.heappush(xq, -n)
-        elif c == 'D' and q != []:
+            heapq.heappush(q, (n, i))
+            heapq.heappush(xq, (-n, i))
+            visited[i] = True
+        elif c == 'D':
             if n == -1:
-                while q:
-                    v = heapq.heappop(q)
-                    if v not in visited:
-                        visited.append(v)
-                        print(v)
-                        break
-            else:
-                while xq:
-                    v = heapq.heappop(xq)
-                    if -v not in visited:
-                        visited.append(-v)
-                        print(-v)
-                        break
-    max_val = 2**32
-    min_val = -2**32
-    while q:
-        v = heapq.heappop(q)
-        if v not in visited:
-            min_val = v
-            break
-    while xq:
-        v = heapq.heappop(xq)
-        if -v not in visited:
-            max_val = -v
-            break
-    if max_val:
-        print('EMPTY')
+                while q and not visited[q[0][1]]:
+                    heapq.heappop(q)
+                if q:
+                    visited[q[0][1]] = False
+                    heapq.heappop(q)
+            elif n == 1:
+                while xq and not visited[xq[0][1]]:
+                    heapq.heappop(xq)
+                if xq:
+                    visited[xq[0][1]] = False
+                    heapq.heappop(xq)
+
+    while q and not visited[q[0][1]]:
+        heapq.heappop(q)
+    while xq and not visited[xq[0][1]]:
+        heapq.heappop(xq)
+    
+    if not q or not xq:
+        print("EMPTY")
     else:
-        print("{} {}".format(max_val, min_val))
+        a = -xq[0][0]
+        b = q[0][0]
+        print("{} {}".format(a, b))
