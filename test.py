@@ -1,2 +1,2 @@
-visited = [True, True, False]
-print(visited.count(True))
+a = '1'
+print(a.isdecimal())
