@@ -19,9 +19,6 @@ def bfs(q):
                 return -1
     return dist[x][y]
                 
-        
-        
-
 graph = []
 dist = [[0 for _ in range(m)] for _ in range(n)]
 q = deque()
