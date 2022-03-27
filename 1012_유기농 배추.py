@@ -15,8 +15,7 @@ def bfs(start):
             b = y + dy[i]
             if 0<=a<m and 0<=b<n and graph[a][b] == 1:
                 graph[a][b] = 0
-                q.append((a, b))
-                
+                q.append((a, b))         
         
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
