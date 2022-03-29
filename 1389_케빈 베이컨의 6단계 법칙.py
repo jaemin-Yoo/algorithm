@@ -33,4 +33,3 @@ for i in range(1, n+1):
         min_cnt = cnt
         result = i
 print(result)
-        
