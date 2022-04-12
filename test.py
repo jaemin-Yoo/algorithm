@@ -1,5 +1,2 @@
-import heapq
-arr = []
-heapq.heappush(arr, (1, -1))
-heapq.heappush(arr, (2, -2))
-print(heapq.heappop(arr)[1])
+print(1 ^ 1)
+print(0 ^ 1)
