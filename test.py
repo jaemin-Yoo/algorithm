@@ -1,1 +1,2 @@
-print(7+8+10+13+19+20+23+25+15)
+import math
+print(math.ceil(1/2))
