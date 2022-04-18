@@ -4,24 +4,11 @@ input = sys.stdin.readline
 n = int(input())
 arr = list(map(int, input().split()))
 
-cnt = 1
-upCnt = 1
+upDp = [1 for _ in range(n)]
+downDp = [1 for _ in range(n)]
 for i in range(1, n):
     if arr[i-1] <= arr[i]:
-        cnt += 1
-    else:
-        upCnt = max(cnt, upCnt)
-        cnt = 1
-upCnt = max(cnt, upCnt)
-
-cnt = 1
-downCnt = 1
-for i in range(1, n):
+        upDp[i] = upDp[i-1]+1
     if arr[i-1] >= arr[i]:
-        cnt += 1
-    else:
-        downCnt = max(cnt, downCnt)
-        cnt = 1
-downCnt = max(cnt, downCnt)
-
-print(max(upCnt, downCnt))
+        downDp[i] = downDp[i-1]+1
+print(max(max(upDp), max(downDp)))
