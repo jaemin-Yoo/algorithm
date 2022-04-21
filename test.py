@@ -1,4 +1,5 @@
-a = [1, 2, 3]
-
-for i in range(2):
-    print(a[i-1])
+a = 2
+if a == (1 or 2 or 3):
+    print('hi')
+else:
+    print('no')
