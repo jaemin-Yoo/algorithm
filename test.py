@@ -1,5 +1,4 @@
-a = 2
-if a == (1 or 2 or 3):
-    print('hi')
-else:
-    print('no')
+s = "SAMSUNGSAMSUNGSAMSUNGSAMSUNGSA"
+
+result = s.split(s[:7])
+print(result)
