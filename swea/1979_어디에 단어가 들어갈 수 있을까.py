@@ -12,7 +12,6 @@ for idx in range(1, t+1):
             if cnt == k and graph[i][j] == 0:
                 cnt = 0
                 result += 1
-                print(i, j)
             
             if graph[i][j] == 1:
                 cnt += 1
@@ -20,7 +19,6 @@ for idx in range(1, t+1):
                 cnt = 0
         if cnt == k:
             result += 1
-            print(i, j)
             
     
     for j in range(n):
@@ -29,7 +27,6 @@ for idx in range(1, t+1):
             if cnt == k and graph[i][j] == 0:
                 cnt = 0
                 result += 1
-                print(i, j)
                 
             if graph[i][j] == 1:
                 cnt += 1
@@ -37,6 +34,5 @@ for idx in range(1, t+1):
                 cnt = 0
         if cnt == k:
             result += 1
-            print(i, j)
      
     print("#{} {}".format(idx, result))
