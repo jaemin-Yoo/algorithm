@@ -15,13 +15,6 @@ def bfs(start):
                 q.append((a, b))
                 visited[a][b] = visited[x][y] + 1
                 
-                # for row in visited:
-                #     print(*row)
-                
-                
-                # print()
-                
-                
                 if a == ex and b == ey:
                     return visited[a][b]
     
