@@ -1,18 +1,18 @@
-max_a = int((10**7)**0.5)
-arr = [True, True] + [False for _ in range(2, max_a+1)]
-for i in range(2, int(max_a**0.5)+1):
-    if arr[i] == False:
-        for j in range(i*2, max_a+1, i):
+max_a = int((10 ** 7) ** 0.5)
+arr = [True, True] + [False for _ in range(2, max_a + 1)]
+for i in range(2, int(max_a ** 0.5) + 1):
+    if not arr[i]:
+        for j in range(i * 2, max_a + 1, i):
             arr[j] = True
 
 dec = []
-for i in range(2, len(arr)):        
-    if arr[i] == False:
+for i in range(2, len(arr)):
+    if not arr[i]:
         dec.append(i)
 
 t = int(input())
 res = []
-for idx in range(1, t+1):
+for idx in range(1, t + 1):
     a = int(input())
     result = 1
 
@@ -27,8 +27,8 @@ for idx in range(1, t+1):
             break
     if a > 1:
         result *= a
-            
+
     res.append(result)
 
-for idx in range(1, t+1):
-    print("#{} {}".format(idx, res[idx-1]))
+for idx in range(1, t + 1):
+    print("#{} {}".format(idx, res[idx - 1]))
