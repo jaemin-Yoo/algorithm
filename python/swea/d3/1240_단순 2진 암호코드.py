@@ -19,7 +19,6 @@ for idx in range(1, t+1):
                 j -= 1
         if result != []:
             break
-    print(result)
     
     if result != []:
         odd = 0
@@ -30,9 +29,7 @@ for idx in range(1, t+1):
             else:
                 even += result[i-1]
                 
-        print(odd, even, result[-1])
         v = odd * 3 + even + result[-1]
-        print(v)
         if v % 10 == 0:
             print("#{} {}".format(idx, sum(result)))
         else:
