@@ -8,14 +8,14 @@ for idx in range(1, t+1):
     row4 = ""
     row5 = ""
     for i in s:
-        row1 += "..#.."
-        row2 += ".#.#."
+        row1 += "..#."
+        row2 += ".#.#"
         row3 += "#." + i + "."
-        row4 += ".#.#."
-        row5 += "..#.."
+        row4 += ".#.#"
+        row5 += "..#."
     
-    print(row1)
-    print(row2)
+    print(row1 + ".")
+    print(row2 + ".")
     print(row3 + "#")
-    print(row4)
-    print(row5)
+    print(row4 + ".")
+    print(row5 + ".")
