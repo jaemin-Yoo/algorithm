@@ -18,9 +18,11 @@ for idx in range(1, 11):
             for j in range(int(cmd[i+1])):
                 arr.append(int(cmd[i+2+j]))
             i += int(cmd[i+1]) + 2
-        print(arr)
     
     print("#{}".format(idx), end=" ")
     m = min(len(arr), 10)
     for i in range(m):
-        print(arr[i], end=" ")
+        if i == m-1:
+            print(arr[i])
+        else:
+            print(arr[i], end=" ")
