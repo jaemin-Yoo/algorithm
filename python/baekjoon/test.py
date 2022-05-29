@@ -1,20 +1,31 @@
-t = int(input())
-for idx in range(1, t+1):
-    r1, r2 = map(int, input().split())
-    s1, s2 = 1, 0
-    t1, t2 = 0, 1
-    while r2 > 0:
-        q = r1 // r2
-        r = r1 - q * r2
-        r1, r2 = r2, r
+import sys
+from collections import deque
+input = sys.stdin.readline
 
-        s = s1 - q * s2
-        s1, s2 = s2, s
+n, m = map(int, input().split())
+in_degree = [0] * (n + 1)
+graph = [[] for _ in range(n+1)]
 
-        t = t1 - q * t2
-        t1, t2 = t2, t
+for _ in range(m):
+    a, b = map(int, input().split())
+    in_degree[b] += 1
+    graph[a].append(b)
 
-    if r1 == 1:
-        print("#{} {} {}".format(idx, s1, t1))
-    else:
-        print("#{} -1".format(idx))
+queue = deque()
+ans = []
+
+for i in range(1, n+1):
+    if in_degree[i] == 0:
+        queue.append(i)
+
+while queue:
+    current = queue.popleft()
+    ans.append(current)
+
+    for x in graph[current]:
+        in_degree[x] -= 1
+
+        if in_degree[x] == 0:
+            queue.append(x)
+
+print(*ans, end=" ")
