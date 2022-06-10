@@ -12,19 +12,28 @@ for row in arr:
     for _ in range(diff):
         row.insert(0, '')
 
-number = ['', '', '', '', '', '', '', '', '', '']
-
-cnt = 9
 result = ['' for _ in range(n)]
+d = {}
 for j in range(max_len):
     for i in range(n):
         if arr[i][j] != '':
-            if arr[i][j] in number:
-                result[i] += str(number.index(arr[i][j]))
-            else:
-                number[cnt] = arr[i][j]
-                result[i] += str(cnt)
-                cnt -= 1
+            if arr[i][j] not in d:
+                d[arr[i][j]] = 10 ** (max_len - j)
+            else:    
+                d[arr[i][j]] += 10 ** (max_len - j)
+                
+d = dict(sorted(d.items(), key=lambda x:x[1], reverse=True))
+
+number = ['', '', '', '', '', '', '', '', '', '']
+cnt = 9
+for k in d.keys():
+    number[cnt] = k
+    cnt -= 1
+
+for j in range(max_len):
+    for i in range(n):
+        if arr[i][j] != '':
+            result[i] += str(number.index(arr[i][j]))
 
 ans = 0
 for v in result:
