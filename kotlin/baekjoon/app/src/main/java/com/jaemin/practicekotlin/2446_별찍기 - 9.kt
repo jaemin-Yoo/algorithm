@@ -5,27 +5,10 @@ import java.io.InputStreamReader
 
 fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
     val n = readLine().toInt()
-    for (i in 0 until n) {
-        for (j in 0 until i) {
-            print(" ")
-        }
-
-        for (j in 0 until -2*i+2*n-1){
-            print("*")
-        }
-
-        println()
+    for (i in 1..n) {
+        println(" ".repeat(i-1) + "*".repeat(2*n - (2*i-1)))
     }
-
-    for (i in 0 until n-1) {
-        for (j in 0 until n-i-2) {
-            print(" ")
-        }
-
-        for (j in 0 until 2*i+3){
-            print("*")
-        }
-
-        println()
+    for (i in 1 until n) {
+        println(" ".repeat(n-i-1) + "*".repeat(2*i+1))
     }
 }
