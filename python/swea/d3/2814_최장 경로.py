@@ -11,6 +11,7 @@ def dfs(node, dist):
     for i in graph[node]:
         if visited[i] == 0:
             dfs(i, dist)
+    visited[node] = 0
 
 t = int(input())
 for idx in range(1, t+1):
@@ -23,8 +24,8 @@ for idx in range(1, t+1):
         graph[y].append(x)
     
     cnt = 0
+    visited = [0 for _ in range(n+1)]
     for i in range(1, n+1):
-        visited = [0 for _ in range(n+1)]
         dfs(i, 0)
         
     print("#{} {}".format(idx, cnt))
