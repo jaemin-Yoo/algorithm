@@ -10,4 +10,3 @@ for i in range(len(b) - len(a)+1):
             cnt += 1
     result = min(cnt, result)
 print(result)
-        
