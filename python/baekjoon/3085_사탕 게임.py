@@ -1,10 +1,9 @@
-from re import L
 import sys
 input = sys.stdin.readline
 
 def solve():
     global result
-    
+
     for i in range(n):
         a = graph[i][0]
         cnt = 1
@@ -16,7 +15,7 @@ def solve():
                 cnt = 1
                 a = graph[i][j]
         result = max(result, cnt)
-        
+
     for j in range(n):
         a = graph[0][j]
         cnt = 1
