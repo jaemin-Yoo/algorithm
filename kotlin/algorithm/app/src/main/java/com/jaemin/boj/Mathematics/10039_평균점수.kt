@@ -1,4 +1,4 @@
-package com.jaemin.practicekotlin
+package com.jaemin.boj.Mathematics
 
 import java.io.BufferedReader
 import java.io.InputStreamReader
