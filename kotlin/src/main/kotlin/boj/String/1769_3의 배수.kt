@@ -1,15 +1,11 @@
 package boj.String
 
 fun main() {
-    var s = readLine()!!
+    var s = readln()
 
     var cnt = 0
     while(s.length > 1) {
-        var ans = 0
-        for (c in s) {
-            ans += c - '0'
-        }
-        s = ans.toString()
+        s = s.map { it - '0' }.sum().toString()
         cnt += 1
     }
     println(cnt)
