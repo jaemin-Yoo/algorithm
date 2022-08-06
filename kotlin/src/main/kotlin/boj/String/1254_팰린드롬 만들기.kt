@@ -1,4 +1,4 @@
-package com.jaemin.practicekotlin
+package boj.String
 
 import java.lang.Integer.max
 
