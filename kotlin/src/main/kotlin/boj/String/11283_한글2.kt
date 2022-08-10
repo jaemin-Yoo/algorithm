@@ -1,5 +1,3 @@
 package boj.String
 
-fun main() {
-    println(readln()[0].code - 44031)
-}
+fun main()=print(readln()[0].code-44031)
