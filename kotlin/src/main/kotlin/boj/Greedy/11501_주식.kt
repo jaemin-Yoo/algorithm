@@ -1,5 +1,4 @@
-package com.jaemin.practicekotlin
-
+package boj.Greedy
 
 fun main() {
     val t = readln().toInt()
