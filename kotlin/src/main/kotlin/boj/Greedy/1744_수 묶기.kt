@@ -6,44 +6,46 @@ fun main() {
     repeat(n) {
         arr.add(readln().toInt())
     }
-    arr.sort()
-
+    arr.sortDescending()
+    val negativeCnt = arr.count { it < 0 }
+    var negativeState = false
     var result = 0
-    var idx = arr.lastIndex
-    if (idx == 0) {
-        result += arr[0]
-    }
-
-    while (idx >= 1) {
-        if (arr[idx] >= 0 && arr[idx-1] >= 0) {
-            if (arr[idx-1] <= 1) {
-                result += arr[idx] + arr[idx-1]
-            } else {
-                result += arr[idx] * arr[idx-1]
-            }
-            idx -= 2
-        } else if (arr[idx] >= 0 && arr[idx-1] < 0) {
-            if (arr[idx] == 0) {
-                result += arr[idx] * arr[idx-1]
-            } else {
-                result += arr[idx] + arr[idx-1]
-            }
-            idx -= 2
-        } else {
-            result += arr[idx] * arr[idx-1]
-            idx -= 2
+    var i = 0
+    while (i <= arr.lastIndex) {
+        if (i == arr.lastIndex) {
+            result += arr[i]
+            break
         }
 
+        if (arr[i] > 0) {
+            if (arr[i+1] > 1) {
+                result += arr[i] * arr[i+1]
+                i += 2
+                continue
+            }
+        } else if (arr[i] == 0) {
+            if (arr[i+1] < 0 && negativeCnt % 2 == 1) {
+                negativeState = true
+                i += 2
+                continue
+            }
+        } else if (arr[i] < 0) {
+            if (!negativeState && negativeCnt % 2 == 1) {
+                result += arr[i]
+                negativeState = true
+                i += 1
+                continue
+            }
 
-
-        result += if (arr[idx-1] <= 1) {
-            arr[idx] + arr[idx-1]
-        } else if (arr[idx] == 0) {
-            0
-        } else {
-            arr[idx] * arr[idx-1]
+            if (arr[i+1] < 0) {
+                result += arr[i] * arr[i+1]
+                i += 2
+                continue
+            }
         }
-        idx -= 2
+
+        result += arr[i]
+        i += 1
     }
     println(result)
 }

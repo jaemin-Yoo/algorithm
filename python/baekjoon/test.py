@@ -1,13 +1,9 @@
-N, K = map(int, input().split())
+import sys
+input = sys.stdin.readline
 
-cnt = 0
-
-nums = [True] * (N + 1)
-for i in range(2, len(nums) + 1):
-    for j in range(i, N+1, i):
-        if nums[j] == True:
-            nums[j] = False
-            cnt = cnt + 1
-            if cnt == K:
-                print(j)
-                break
+s = input().rstrip()
+for i in range(len(s)):
+    if i % 10 == 0 and i != 0:
+        print()
+        
+    print(s[i], end="")
