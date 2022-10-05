@@ -1,32 +1,75 @@
 package com.jaemin.practicekotlin
 
-import java.util.*
-import kotlin.collections.HashMap
+import java.util.ArrayDeque
 
 fun main() {
     val n = readln().toInt()
-    val s = readln()
-    val stack = Stack<Double>()
-    val map = HashMap<Char, Double>()
-    for (i in 0 until n) {
-        map[(65 + i).toChar()] = readln().toDouble()
+    val a = readln().split(" ").map { it.toInt() }.toMutableList()
+    val result = mutableListOf<Int>()
+    val dq = ArrayDeque<Int>()
+
+    for (i in 1..n) {
+        dq.add(i)
     }
 
-    s.forEach {
-        if (it.isLetter()) {
-            stack.add(map[it])
+    while (dq.isNotEmpty()) {
+        val v = dq.removeFirst()
+        result.add(v)
+
+        if (dq.isEmpty()) break
+
+        val cnt = a[v - 1]
+        if (cnt > 0) {
+            repeat(cnt - 1) {
+                val temp = dq.removeFirst()
+                dq.addLast(temp)
+            }
         } else {
-            val b = stack.pop()
-            val a = stack.pop()
-            when (it) {
-                '+' -> stack.add(a + b)
-                '-' -> stack.add(a - b)
-                '*' -> stack.add(a * b)
-                '/' -> stack.add(a / b)
+            repeat(-cnt) {
+                val temp = dq.removeLast()
+                dq.addFirst(temp)
             }
         }
     }
 
-    val result = stack.pop()
-    println(String.format("%.2f", result))
+    println(result.joinToString(" "))
 }
+
+/*
+fun main() {
+    val n = readln().toInt()
+    val a = readln().split(" ").map { it.toInt() }.toMutableList()
+    val result = mutableListOf<Int>()
+    val dq = ArrayDeque<Int>()
+
+    for (i in 1..n) {
+        dq.addLast(i)
+    }
+
+    var cnt = 0
+    while (dq.isNotEmpty()) {
+        val v = if (cnt >= 0) {
+            dq.removeFirst()
+        } else {
+            dq.removeLast()
+        }
+        result.add(v)
+
+        if (dq.isEmpty()) break
+
+        cnt = a[v - 1]
+        if (cnt > 0) {
+            repeat(cnt - 1) {
+                val temp = dq.removeFirst()
+                dq.addLast(temp)
+            }
+        } else {
+            repeat(abs(cnt + 1)) {
+                val temp = dq.removeLast()
+                dq.addFirst(temp)
+            }
+        }
+    }
+
+    println(result.joinToString(" "))
+}*/
