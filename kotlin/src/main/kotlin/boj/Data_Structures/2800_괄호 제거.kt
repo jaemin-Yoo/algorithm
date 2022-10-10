@@ -1,4 +1,6 @@
-package com.jaemin.practicekotlin
+package boj.Data_Structures.괄호_제거2800
+
+import java.util.*
 
 val cbnList = mutableListOf<List<Int>>()
 fun main() {
@@ -8,10 +10,23 @@ fun main() {
         combine(mutableListOf(), i, count, 1)
     }
 
+    val stack = Stack<Int>()
+    val closeList = mutableListOf<Int>()
+    var i = 1
+    s.forEach {
+        if (it == '(') {
+            stack.add(i)
+            i += 1
+        } else if (it == ')') {
+            val v = stack.pop()
+            closeList.add(v)
+        }
+    }
+
     val result = mutableListOf<String>()
     for (arr in cbnList) {
         var openCnt = 1
-        var closeCnt = count
+        var closeIdx = 0
         val exp = s.map {
             when (it) {
                 '(' -> {
@@ -24,12 +39,12 @@ fun main() {
                     v
                 }
                 ')' -> {
-                    val v = if (closeCnt !in arr) {
+                    val v = if (closeList[closeIdx] !in arr) {
                         it
                     } else {
                         ""
                     }
-                    closeCnt -= 1
+                    closeIdx += 1
                     v
                 }
                 else -> it
@@ -38,8 +53,8 @@ fun main() {
         result.add(exp)
     }
 
-    result.sort()
-    result.forEach {
+    val res = result.sorted().distinct()
+    res.forEach {
         println(it)
     }
 }
