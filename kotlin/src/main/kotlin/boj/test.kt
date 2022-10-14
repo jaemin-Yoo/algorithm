@@ -1,28 +1,31 @@
 package com.jaemin.practicekotlin
 
+import java.util.PriorityQueue
+
 fun main() {
-    val n = readln().toInt()
-    val graph = mutableListOf<List<Int>>()
-    repeat(n) {
-        graph.add(readln().split(" ").map { it.toInt() })
-    }
-    val result = solve(n, graph)
-    println(result)
-}
+    val t = readln().toInt()
+    repeat(t) {
+        val n = readln().toInt()
+        val list = readln().split(" ").map { it.toInt() }
 
-fun solve(n: Int, graph: MutableList<List<Int>>): Int {
-    if (n == 1) return graph[0][0]
-
-    var x = n * n - n
-    if (n % 2 == 0) {
-        x += 1
+        val pq = PriorityQueue<Int>()
+        val result = mutableListOf<Int>()
+        for (i in list.indices) {
+            pq.add(list[i])
+            if (i % 2 == 0) {
+                val center = if (i == 0) {
+                    pq.poll()
+                } else {
+                    pq.poll()
+                    val center = pq.poll()
+                    pq.poll()
+                    center
+                }
+                result.add(center)
+                pq.add(center)
+            }
+        }
+        println(n / 2 + 1)
+        println(result.joinToString(" "))
     }
-    var y = 0
-    while (x !in 1..n) {
-        y += 1
-        x -= n * y
-    }
-    val v = graph[0].sorted()[x - 1]
-    val i = graph[0].indexOf(v)
-    return graph[n - y][i]
 }
