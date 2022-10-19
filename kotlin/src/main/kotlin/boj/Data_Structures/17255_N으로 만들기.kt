@@ -1,21 +1,30 @@
 package boj.Data_Structures
 
-import java.util.LinkedList
-import java.util.Queue
-
-lateinit var arr: List<Int>
+lateinit var arr: List<String>
+val result = mutableSetOf<String>()
 fun main() {
-    arr = readln().map { it - '0' }
-    for (n in arr) {
-        bfs(n)
+    arr = readln().map { it.toString() }
+    for (i in arr.indices) {
+        dfs(i, i, arr[i], arr[i])
     }
+
+    println(result.count())
 }
 
-fun bfs(start: Int) {
-    val q: Queue<Int> = LinkedList()
-    q.add(start)
-    while (q.isNotEmpty()) {
-        val x = q.poll()
+fun dfs(left: Int, right: Int, str: String, path: String) {
 
+    if (left == 0 && right == arr.lastIndex) {
+        result.add(path)
+        return
+    }
+
+    if (left - 1 >= 0) {
+        val s = arr[left - 1] + str
+        dfs(left - 1, right, s, "$path $s")
+    }
+
+    if (right + 1 < arr.size) {
+        val s = str + arr[right + 1]
+        dfs(left, right + 1, s, "$path $s")
     }
 }
