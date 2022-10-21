@@ -1,4 +1,4 @@
-package com.jaemin.practicekotlin
+package boj.Data_Structures
 
 import java.util.Collections
 import java.util.PriorityQueue
