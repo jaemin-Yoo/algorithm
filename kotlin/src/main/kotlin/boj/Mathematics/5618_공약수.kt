@@ -1,4 +1,4 @@
-package com.jaemin.practicekotlin
+package boj.Mathematics
 
 import java.util.Collections.max
 
