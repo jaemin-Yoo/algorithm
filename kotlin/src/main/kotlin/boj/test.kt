@@ -1,22 +1,20 @@
 package com.jaemin.practicekotlin
 
-import java.util.Collections.max
-
 fun main() {
-    val n = readln().toInt()
-    val list = readln().split(" ").map { it.toInt() }
-    val m = max(list)
-    var i = 1
-    val result = mutableSetOf<Int>()
-    while(i <= m) {
-        val cnt = list.count { it % i == 0 }
-        if (cnt == n) {
-            result.add(i)
-        }
-        i += 1
+    val (a, b) = readln().split(" ").map { it.toInt() }
+    val arr = Array(a) { Array(b) { 0 } }
+    solve(a, arr)
+    solve(a, arr)
+    arr.forEach {
+        println(it.joinToString(" "))
     }
+}
 
-    result.forEach {
-        println(it)
+fun solve(a: Int, arr: Array<Array<Int>>) {
+    repeat(a) { i ->
+        val list = readln().split(" ").map { it.toInt() }
+        list.forEachIndexed { j, n ->
+            arr[i][j] += n
+        }
     }
 }
