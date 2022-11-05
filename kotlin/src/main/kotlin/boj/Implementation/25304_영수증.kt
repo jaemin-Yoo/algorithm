@@ -1,4 +1,4 @@
-package com.jaemin.practicekotlin
+package boj.Implementation
 
 fun main() {
     val x = readln().toInt()
