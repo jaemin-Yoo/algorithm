@@ -1,18 +1,24 @@
 package com.jaemin.practicekotlin
 
 fun main() {
-    val x = readln().toInt()
     val n = readln().toInt()
-    var result = 0
-    repeat(n) {
-        val (a, b) = readln().split(" ").map { it.toInt() }
-        result += a * b
-    }
-    println(
-        if (result == x) {
-            "Yes"
+    val a = mutableListOf<Char>()
+    val b = mutableListOf<Char>()
+    for (i in 0 until n) {
+        if (i % 2 == 0) {
+            a.add('*')
+            b.add(' ')
         } else {
-            "No"
+            a.add(' ')
+            b.add('*')
         }
-    )
+    }
+
+    repeat(n) {
+        println(a.joinToString("").trimEnd())
+
+        if (n != 1) {
+            println(b.joinToString("").trimEnd())
+        }
+    }
 }
