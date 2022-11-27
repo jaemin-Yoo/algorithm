@@ -1,32 +1,57 @@
 package boj.Bruteforcing.한윤정
 
 private var count = 0
+lateinit var arr: IntArray
+lateinit var visited: BooleanArray
+lateinit var comb: Array<BooleanArray>
+lateinit var ans: IntArray
+var n = 0
+var m = 0
 
 fun main() = with(System.`in`.bufferedReader()) {
-    val (n, m) = readLine().split(" ").map { it.toInt() }
-    val map = mutableMapOf<Int, MutableList<Int>>()
-    for (i in 1..n) {
-        map[i] = mutableListOf()
+    val (nn, mm) = readLine().split(" ").map { it.toInt() }
+    n = nn
+    m = mm
+    arr = IntArray(n + 1)
+    visited = BooleanArray(n + 1)
+    ans = IntArray(3)
+    comb = Array(n + 1) { BooleanArray(n + 1) }
+
+    for (i in 1 until n + 1) {
+        arr[i - 1] = i
     }
 
     repeat(m) {
         val (a, b) = readLine().split(" ").map { it.toInt() }
-        map[a]!!.add(b)
+        comb[a][b] = true
+        comb[b][a] = true
     }
 
+    dfs(0, 0)
+
+    println(count)
 
     close()
 }
 
-fun solve(arr: MutableList<Int>, n: Int, start: Int) {
-    if (arr.size == n) {
+fun dfs(start: Int, depth: Int) {
+    if (depth == 3) {
+        for (i in 0 until 3) {
+            for (j in 0 until 3) {
+                if (comb[ans[i]][ans[j]]) return
+            }
+        }
+
         count += 1
         return
     }
 
     for (i in start until n) {
-        arr.add(i)
-        solve(arr.toMutableList(), n, i + 1)
-        arr.removeLast()
+        if (visited[i]) continue
+
+        visited[i] = true
+        ans[depth] = arr[i]
+        dfs(i + 1, depth + 1)
+        visited[i] = false
     }
 }
