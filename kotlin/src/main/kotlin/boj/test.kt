@@ -1,7 +1,13 @@
 package com.jaemin.practicekotlin
 
 fun main() {
-    val (a, b) = readln().split(" ").map { it.toInt() }
-    val list = readln().split(" ").map { it.toInt() }.sortedDescending()
-    println(list[b - 1])
+    val col = listOf('a', 'e', 'i', 'o', 'u')
+    do {
+        val input = readln().lowercase()
+        if (input == "#") {
+            break
+        } else {
+            println(input.count { col.contains(it) })
+        }
+    } while (true)
 }
