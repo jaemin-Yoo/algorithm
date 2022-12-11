@@ -1,4 +1,4 @@
-package com.jaemin.practicekotlin
+package boj.Greedy
 
 import kotlin.math.max
 
