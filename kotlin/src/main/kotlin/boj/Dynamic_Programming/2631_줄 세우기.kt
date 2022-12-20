@@ -1,4 +1,4 @@
-package boj.Greedy
+package boj.Greedy.줄세우기
 
 import kotlin.math.max
 
