@@ -1,4 +1,4 @@
-package boj.Breadth_first_Search
+package boj.Breadth_first_Search.다리만들기2146
 
 import java.util.Queue
 import java.util.LinkedList
