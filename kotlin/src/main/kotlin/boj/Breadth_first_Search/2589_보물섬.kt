@@ -1,8 +1,4 @@
-package com.jaemin.practicekotlin
-
-/**
- * 2589_보물섬
- */
+package boj.Breadth_first_Search
 
 import java.util.Queue
 import java.util.LinkedList
