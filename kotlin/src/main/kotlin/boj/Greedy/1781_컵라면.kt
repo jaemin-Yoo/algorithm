@@ -1,5 +1,7 @@
 package boj.Greedy
 
+import java.util.PriorityQueue
+
 fun main() = with(System.`in`.bufferedReader()) {
     val n = readLine().toInt()
     val list = mutableListOf<Pair<Int, Int>>()
@@ -10,14 +12,21 @@ fun main() = with(System.`in`.bufferedReader()) {
     list.sortWith(compareBy<Pair<Int, Int>> { it.first }.thenByDescending { it.second } )
 
     var day = 1
-    var result = 0
+    val pq = PriorityQueue<Int>()
     for ((d, r) in list) {
-        if (d >= day) {
-            println("$d $r")
-            result += r
+        if (pq.isEmpty()) {
+            pq.add(r)
+            continue
+        }
+
+        if (d == day && pq.isNotEmpty() && r > pq.peek()) {
+            pq.poll()
+            pq.add(r)
+        } else if (d > day) {
             day += 1
+            pq.add(r)
         }
     }
-    println(result)
+    println(pq.sum())
     close()
 }
