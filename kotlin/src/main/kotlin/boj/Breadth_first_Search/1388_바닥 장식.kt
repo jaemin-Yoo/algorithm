@@ -1,54 +1,55 @@
-package boj.Breadth_first_Search
+package boj.Breadth_first_Search.바닥장식1388
 
 import java.util.LinkedList
 import java.util.Queue
 
-class 바닥장식1388{
-    var n = 0
-    var m = 0
+fun main() {
+    val (n, m) = readln().split(' ').map { it.toInt() } // 입력 받기
+
+    // 입력 그래프 만들기
     val graph = mutableListOf<List<Char>>()
-    val visited by lazy { Array(n) { Array(m) { 0 } } }
+    repeat(n) {
+        graph.add(readln().toList())
+    }
+
+    val visited = Array(n) { BooleanArray(m) } // 방문 그래프 만들기
+
+    // 모든 정점 방문하기
     var cnt = 0
-    fun main() {
-        val (_n, _m) = readln().split(' ').map { it.toInt() }
-        n = _n
-        m = _m
-        repeat(n) {
-            graph.add(readln().toList())
-        }
-
-        for (i in 0 until n) {
-            for (j in 0 until m) {
-                bfs(i to j)
-            }
-        }
-
-        println(cnt)
-    }
-
-    fun bfs(start: Pair<Int, Int>) {
-        val q: Queue<Pair<Int, Int>> = LinkedList()
-        q.add(start)
-
-        if (visited[start.first][start.second] == 0) {
-            visited[start.first][start.second] = 1
-            cnt += 1
-        } else return
-
-        while (q.isNotEmpty()) {
-            val (x, y) = q.poll()
-
-            var a = x
-            var b = y
-            if (graph[x][y] == '-') b += 1 else a += 1
-
-            if (a in 0 until n
-                && b in 0 until m
-                && visited[a][b] == 0
-                && graph[start.first][start.second] == graph[a][b]) {
-                visited[a][b] = 1
-                q.add(a to b)
+    for (i in 0 until n) {
+        for (j in 0 until m) {
+            if (bfs(i, j, graph, visited)) {
+                cnt += 1
             }
         }
     }
+
+    println(cnt)
+}
+
+fun bfs(startX: Int, startY: Int, graph: List<List<Char>>, visited: Array<BooleanArray>): Boolean {
+    val q: Queue<Pair<Int, Int>> = LinkedList()
+    q.add(startX to startY)
+
+    if (!visited[startX][startY]) {
+        visited[startX][startY] = true
+    } else {
+        return false
+    }
+
+    while (q.isNotEmpty()) {
+        val (x, y) = q.poll()
+        val (a, b) = if (graph[x][y] == '-') {
+            x to y + 1
+        } else {
+            x + 1 to y
+        }
+
+        if (a in graph.indices && b in graph[0].indices && !visited[a][b] && graph[startX][startY] == graph[a][b]) {
+            visited[a][b] = true
+            q.add(a to b)
+        }
+    }
+
+    return true
 }
