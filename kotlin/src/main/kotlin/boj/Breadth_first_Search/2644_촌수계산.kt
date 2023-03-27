@@ -1,43 +1,50 @@
-package boj.Breadth_first_Search
+package boj.Breadth_first_Search.촌수계산2644
 
 import java.util.LinkedList
 import java.util.Queue
 
-class 촌수계산2644() {
-    lateinit var graph: Array<MutableList<Int>>
-    lateinit var visited: Array<Int>
-    fun main() {
-        val n = readln().toInt()
-        val (x, y) = readln().split(' ').map { it.toInt() }
-        graph = Array(n+1) { mutableListOf() }
-        visited = Array(n+1) { 0 }
+fun main() {
+    val n = readln().toInt()
+    val (x, y) = readln().split(' ').map { it.toInt() }
+    val m = readln().toInt()
 
-        val m = readln().toInt()
-        repeat(m) {
-            val (a, b) = readln().split(' ').map { it.toInt() }
-            graph[a].add(b)
-            graph[b].add(a)
-        }
-
-        println(BFS(x, y))
+    // 그래프 만들기
+    val graph = List(n + 1) { mutableListOf<Int>() }
+    repeat(m) {
+        val (parent, child) = readln().split(' ').map { it.toInt() }
+        graph[parent].add(child)
+        graph[child].add(parent)
     }
 
-    fun BFS(start: Int, end: Int): Int {
-        val q: Queue<Pair<Int, Int>> = LinkedList()
-        q.add(start to 0)
-        visited[start] = 1
+    // 방문 그래프 만들기
+    val visited = BooleanArray(n + 1)
 
-        while (q.isNotEmpty()) {
-            val (node, cnt) = q.poll()
-            for (i in graph[node]) {
-                if (visited[i] == 0) {
-                    visited[i] = 1
-                    q.add(i to cnt + 1)
-                    if (i == end) return cnt + 1
-                }
+    val dist = dfs(x, y, graph, visited)
+    println(dist)
+}
+
+fun dfs(start: Int, end: Int, graph: List<MutableList<Int>>, visited: BooleanArray): Int {
+    // 첫 노드 큐 셋팅
+    val q: Queue<Pair<Int, Int>> = LinkedList()
+    q.add(start to 0)
+
+    // 첫 방문 노드 셋팅
+    visited[start] = true
+
+    while (q.isNotEmpty()) {
+        val (n, dist) = q.poll()
+
+        if (n == end) {
+            return dist
+        }
+
+        for (next in graph[n]) {
+            if (!visited[next]) {
+                visited[next] = true
+                q.add(next to dist + 1)
             }
         }
-
-        return -1
     }
+
+    return -1
 }
