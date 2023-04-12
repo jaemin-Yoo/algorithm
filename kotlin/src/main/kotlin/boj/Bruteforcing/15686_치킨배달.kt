@@ -3,12 +3,12 @@ package boj.Bruteforcing.치킨배달15686
 import kotlin.math.abs
 import kotlin.math.min
 
-val graph = mutableListOf<List<Int>>()
-val selected = mutableListOf<List<Node>>()
-val home = mutableListOf<Node>()
-val chicken = mutableListOf<Node>()
-var n = 0
-var m = 0
+private val graph = mutableListOf<List<Int>>()
+private val selected = mutableListOf<List<Node>>()
+private val home = mutableListOf<Node>()
+private val chicken = mutableListOf<Node>()
+private var n = 0
+private var m = 0
 
 data class Node(
     val x: Int,

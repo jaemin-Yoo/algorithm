@@ -4,13 +4,13 @@ import java.util.Queue
 import java.util.LinkedList
 import kotlin.math.min
 
-var n = 0
-val graph = mutableListOf<IntArray>()
-lateinit var visited1: Array<Array<Boolean>>
-lateinit var visited2: Array<Array<Int>>
-val dx = listOf(1, -1, 0, 0)
-val dy = listOf(0, 0, 1, -1)
-var mn = Int.MAX_VALUE
+private var n = 0
+private val graph = mutableListOf<IntArray>()
+private lateinit var visited1: Array<Array<Boolean>>
+private lateinit var visited2: Array<Array<Int>>
+private val dx = listOf(1, -1, 0, 0)
+private val dy = listOf(0, 0, 1, -1)
+private var mn = Int.MAX_VALUE
 
 fun main() = with(System.`in`.bufferedReader()) {
     n = readLine().toInt()

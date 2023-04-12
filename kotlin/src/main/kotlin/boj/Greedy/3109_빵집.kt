@@ -2,11 +2,11 @@ package boj.Greedy
 
 import java.util.Stack
 
-val graph = mutableListOf<MutableList<Char>>()
-lateinit var visited: Array<BooleanArray>
-val di = listOf(-1, 0, 1)
-var r = 0
-var c = 0
+private val graph = mutableListOf<MutableList<Char>>()
+private lateinit var visited: Array<BooleanArray>
+private val di = listOf(-1, 0, 1)
+private var r = 0
+private var c = 0
 
 fun main() = with(System.`in`.bufferedReader()) {
     val (_r, _c) = readLine().split(" ").map{ it.toInt() }
