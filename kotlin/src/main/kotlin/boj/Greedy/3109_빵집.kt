@@ -1,54 +1,46 @@
-package boj.Greedy
+package boj.Greedy.빵집3109
 
 import java.util.Stack
 
 private val graph = mutableListOf<MutableList<Char>>()
-private lateinit var visited: Array<BooleanArray>
-private val di = listOf(-1, 0, 1)
-private var r = 0
-private var c = 0
 
-fun main() = with(System.`in`.bufferedReader()) {
-    val (_r, _c) = readLine().split(" ").map{ it.toInt() }
-    r = _r
-    c = _c
-    visited = Array(r) { BooleanArray(c) }
+fun main() {
+    val (r, c) = readln().split(" ").map { it.toInt() }
     repeat(r) {
-        graph.add(readLine().toMutableList())
+        val row = readln().toMutableList()
+        graph.add(row)
     }
 
-    var cnt = 0
+    val visited = MutableList(r) { MutableList(c) { false } }
+    var result = 0
     for (i in 0 until r) {
-        if (dfs(i to 0)) cnt += 1
+        result += dfs(i, visited)
     }
-    visited.forEach {
-        println(it.joinToString(" "))
-    }
-    println(cnt)
-
-    close()
+    println(result)
 }
 
-fun dfs(start: Pair<Int, Int>): Boolean {
+fun dfs(startX: Int, visited: MutableList<MutableList<Boolean>>): Int {
     val stack = Stack<Pair<Int, Int>>()
-    stack.add(start)
-    visited[start.first][start.second] = true
+    stack.add(startX to 0)
+
+    visited[startX][0] = true
     while (stack.isNotEmpty()) {
         val (x, y) = stack.pop()
-        for (i in 0 until 3) {
-            val a = x + di[i]
-            val b = y + 1
-            if (a in 0 until r
-                && b in 0 until c
-                && graph[a][b] == '.'
-                && !visited[a][b]) {
-                println(a to b)
-                stack.add(a to b)
-                visited[a][b] = true
-                if (b == c - 1) return true
-            }
+        visited[x][y] = true
+        if (y == graph[0].lastIndex) {
+            return 1
         }
+
+        movePoint(x + 1, y + 1, visited, stack)
+        movePoint(x, y + 1, visited, stack)
+        movePoint(x - 1, y + 1, visited, stack)
     }
 
-    return false
+    return 0
+}
+
+fun movePoint(a: Int, b: Int, visited: MutableList<MutableList<Boolean>>, stack: Stack<Pair<Int, Int>>) {
+    if (a in graph.indices && b in graph[0].indices && !visited[a][b] && graph[a][b] != 'x') {
+        stack.add(a to b)
+    }
 }
