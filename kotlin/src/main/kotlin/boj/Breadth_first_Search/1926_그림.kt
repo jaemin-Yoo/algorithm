@@ -4,11 +4,11 @@ import java.lang.Integer.max
 import java.util.LinkedList
 import java.util.Queue
 
-val graph = mutableListOf<MutableList<Int>>()
-val dx = listOf(-1, 1, 0, 0)
-val dy = listOf(0, 0, -1, 1)
-var n = 0
-var m = 0
+private val graph = mutableListOf<MutableList<Int>>()
+private val dx = listOf(-1, 1, 0, 0)
+private val dy = listOf(0, 0, -1, 1)
+private var n = 0
+private var m = 0
 fun main() {
     val (_n, _m) = readln().split(" ").map { it.toInt() }
     n = _n

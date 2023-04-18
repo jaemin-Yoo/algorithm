@@ -2,10 +2,10 @@ package boj.Breadth_first_Search.구슬탈출2
 
 import java.util.*
 
-val graph = mutableListOf<MutableList<Char>>()
-lateinit var visited: Array<Array<Array<Array<Int>>>>
-val dx = listOf(-1, 1, 0, 0)
-val dy = listOf(0, 0, -1, 1)
+private val graph = mutableListOf<MutableList<Char>>()
+private lateinit var visited: Array<Array<Array<Array<Int>>>>
+private val dx = listOf(-1, 1, 0, 0)
+private val dy = listOf(0, 0, -1, 1)
 fun main() {
     val (n ,m) = readln().split(" ").map { it.toInt() }
     var (rx, ry, bx, by) = listOf(-1, -1, -1, -1)

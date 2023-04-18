@@ -1,12 +1,12 @@
 package boj.Bruteforcing.한윤정
 
 private var count = 0
-lateinit var arr: IntArray
-lateinit var visited: BooleanArray
-lateinit var comb: Array<BooleanArray>
-lateinit var ans: IntArray
-var n = 0
-var m = 0
+private lateinit var arr: IntArray
+private lateinit var visited: BooleanArray
+private lateinit var comb: Array<BooleanArray>
+private lateinit var ans: IntArray
+private var n = 0
+private var m = 0
 
 fun main() = with(System.`in`.bufferedReader()) {
     val (nn, mm) = readLine().split(" ").map { it.toInt() }
