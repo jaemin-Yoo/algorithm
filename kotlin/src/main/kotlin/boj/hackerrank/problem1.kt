@@ -1,4 +1,4 @@
-package boj.hackerrank
+/*package boj.hackerrank
 
 fun main() {
     var prevHead = listHead
@@ -18,7 +18,7 @@ fun main() {
         }
         prevHead = prevHead.next
     }
-}
+}*/
 
 /*
 
