@@ -1,11 +1,10 @@
 package com.jaemin.practicekotlin
 
+import java.util.*
+
 fun main() {
+    val arr1 = arrayOf(1)
+    val arr2 = arrayOf(2)
 
-    val list = ArrayList<Int>()
-    val a = MutableList(5) { 1 }
-    val b = List(7) { true }
-    val c = Array(6) { 1 }
-
-    println(listOf(1, 2, 3) == mutableListOf(1, 2, 4))
+    println((arr1 + arr2).contentToString())
 }
