@@ -1,4 +1,4 @@
-package programmers.카카오채용연계형인턴십2021.숫자문자열과영단어
+package programmers.KI2021.숫자문자열과영단어
 
 // 12분
 

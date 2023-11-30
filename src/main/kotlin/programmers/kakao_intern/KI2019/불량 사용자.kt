@@ -1,4 +1,4 @@
-package programmers.카카오개발자겨울인턴십2019.불량사용자
+package programmers.KI2019.불량사용자
 
 // 1시간
 

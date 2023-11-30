@@ -1,4 +1,4 @@
-package programmers.KAKAOTECHINTERNSHIP2022
+package programmers.KI2022.등산코스정하기
 
 import java.util.Queue
 import java.util.LinkedList

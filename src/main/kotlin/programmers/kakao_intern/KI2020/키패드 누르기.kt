@@ -1,4 +1,4 @@
-package programmers.카카오인턴십2020.키패드누르기
+package programmers.KI2020.키패드누르기
 
 // 40분
 

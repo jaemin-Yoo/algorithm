@@ -1,4 +1,4 @@
-package programmers.카카오개발자겨울인턴십2019.크레인인형뽑기게임
+package programmers.KI2019.크레인인형뽑기게임
 
 // 26분
 

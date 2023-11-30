@@ -1,4 +1,4 @@
-package programmers.카카오인턴십2020.경주로건설
+package programmers.KI2020.경주로건설
 
 // 1시간
 

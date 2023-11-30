@@ -1,4 +1,4 @@
-package boj.주사위조합3
+package programmers.kakao_intern.주사위조합3
 
 private const val DICE_SIZE = 6
 

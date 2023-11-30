@@ -1,4 +1,4 @@
-package programmers.카카오채용연계형인턴십2021.표편집
+package programmers.KI2021.표편집
 
 import java.util.Stack
 

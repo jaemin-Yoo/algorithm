@@ -1,4 +1,4 @@
-package boj.카드게임4
+package programmers.kakao_intern.카드게임4
 
 class Solution {
     fun solution(coin: Int, cards: IntArray): Int {

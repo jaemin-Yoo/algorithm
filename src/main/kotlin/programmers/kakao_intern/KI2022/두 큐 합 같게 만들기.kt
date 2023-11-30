@@ -1,4 +1,4 @@
-package programmers.KAKAOTECHINTERNSHIP2022.두큐합같게만들기
+package programmers.KI2022.두큐합같게만들기
 
 import java.util.Queue
 import java.util.LinkedList

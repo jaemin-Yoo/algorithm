@@ -1,4 +1,4 @@
-package boj.카톡선물기능1
+package programmers.kakao_intern.카톡선물기능1
 
 import kotlin.math.max
 

@@ -1,4 +1,4 @@
-package programmers.카카오채용연계형인턴십2021.미로탈출
+package programmers.KI2021.미로탈출
 
 import java.util.Queue
 import java.util.LinkedList

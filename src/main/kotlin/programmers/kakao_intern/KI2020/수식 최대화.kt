@@ -1,4 +1,4 @@
-package programmers.카카오인턴십2020.수식최대화
+package programmers.KI2020.수식최대화
 
 // 1시간 33분
 

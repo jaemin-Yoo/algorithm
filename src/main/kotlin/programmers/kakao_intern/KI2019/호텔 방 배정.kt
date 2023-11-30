@@ -1,4 +1,4 @@
-package programmers.카카오개발자겨울인턴십2019.호텔방배정
+package programmers.KI2019.호텔방배정
 
 // 못품
 

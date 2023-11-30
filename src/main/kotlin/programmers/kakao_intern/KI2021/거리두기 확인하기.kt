@@ -1,4 +1,4 @@
-package programmers.카카오채용연계형인턴십2021.거리두기확인하기
+package programmers.KI2021.거리두기확인하기
 
 // 54분
 

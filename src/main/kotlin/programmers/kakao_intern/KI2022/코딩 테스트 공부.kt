@@ -1,4 +1,4 @@
-package programmers.KAKAOTECHINTERNSHIP2022.코딩테스트공부
+package programmers.KI2022.코딩테스트공부
 
 // DP
 import kotlin.math.min

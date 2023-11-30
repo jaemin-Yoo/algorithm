@@ -1,4 +1,4 @@
-package programmers.KAKAOTECHINTERNSHIP2022.성격유형검사하기
+package programmers.KI2022.성격유형검사하기
 
 class Solution {
 

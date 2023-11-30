@@ -1,4 +1,4 @@
-package programmers.카카오인턴십2020.보석쇼핑
+package programmers.KI2020.보석쇼핑
 
 // 44분
 

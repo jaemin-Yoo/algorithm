@@ -1,4 +1,4 @@
-package boj.도넛막대8자그래프2
+package programmers.kakao_intern.도넛막대8자그래프2
 
 data class NodeCount(
     val inCount: Int,

@@ -1,4 +1,4 @@
-package programmers.카카오개발자겨울인턴십2019.징검다리건너기
+package programmers.KI2019.징검다리건너기
 
 // 못품
 

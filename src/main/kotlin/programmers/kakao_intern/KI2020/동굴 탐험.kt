@@ -1,4 +1,4 @@
-package programmers.카카오인턴십2020.동굴탐험
+package programmers.KI2020.동굴탐험
 
 import java.util.Queue
 import java.util.LinkedList
