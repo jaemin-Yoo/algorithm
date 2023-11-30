@@ -5,8 +5,10 @@ import java.io.File
 import java.net.URI
 
 const val SOLVED_ALGORITHM_FILE_NAME = "SolvedAlgorithm.txt"
+const val SOLVING_ALGORITHM_FILE_NAME = "SolvingAlgorithm.txt"
 const val BOJ_PATH = "src/main/kotlin/boj"
-const val DB_FILE_PATH = "src/main/resources/$SOLVED_ALGORITHM_FILE_NAME"
+const val SOLVED_ALGORITHM_FILE_PATH = "src/main/resources/$SOLVED_ALGORITHM_FILE_NAME"
+const val SOLVING_ALGORITHM_FILE_PATH = "src/main/resources/$SOLVING_ALGORITHM_FILE_NAME"
 
 fun main() {
     start()
@@ -22,21 +24,21 @@ private fun start() {
     } else {
         val selectedAlgorithm = inCompletedAlgorithms.random()
         openWebSite(selectedAlgorithm)
-        addSolvedAlgorithm(selectedAlgorithm)
+        addSolvingAlgorithm(selectedAlgorithm)
         addNoteFile()
     }
 }
 
 private fun getSolvedAlgorithms(): List<String> {
-    val file = File(DB_FILE_PATH)
+    val file = File(SOLVED_ALGORITHM_FILE_PATH)
     if (!file.exists()) {
         return emptyList()
     }
     return file.readLines()
 }
 
-private fun addSolvedAlgorithm(algorithm: Algorithm) {
-    File(DB_FILE_PATH).appendText("${algorithm.name}\n")
+private fun addSolvingAlgorithm(algorithm: Algorithm) {
+    File(SOLVING_ALGORITHM_FILE_PATH).appendText("${algorithm.name}\n")
 }
 
 private fun openWebSite(algorithm: Algorithm) {
@@ -44,7 +46,7 @@ private fun openWebSite(algorithm: Algorithm) {
 }
 
 private fun reset() {
-    File(DB_FILE_PATH).writeText("")
+    File(SOLVED_ALGORITHM_FILE_PATH).writeText("")
 }
 
 fun addNoteFile() {

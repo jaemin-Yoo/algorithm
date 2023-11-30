@@ -9,21 +9,21 @@ fun main() {
 }
 
 private fun complete() {
-    val algorithmName = File(DB_FILE_PATH).readLines().lastOrNull() ?: throw Exception("해결한 문제가 존재하지 않습니다.")
-    val solvedAlgorithm = Algorithm.valueOf(algorithmName)
+    val algorithmName = File(SOLVING_ALGORITHM_FILE_PATH).readLines().lastOrNull()
 
     val notePath = "$BOJ_PATH/$NOTE_FILE_NAME"
     val noteContents = File(notePath).readText()
     val (number, title) = extractDetails(noteContents)
 
-    addProblemFile(noteContents, solvedAlgorithm, number, title)
+    addProblemFile(noteContents, algorithmName, number, title)
     addNoteFile()
-    println("[$solvedAlgorithm] ${number}_$title.kt")
+    addSolvedAlgorithm(algorithmName)
+    println("[${algorithmName ?: "etc"}] ${number}_$title.kt")
 }
 
-private fun addProblemFile(contents: String, algorithm: Algorithm, number: String, title: String) {
-    val algorithmName = algorithm.name.lowercase()
-    val path = "$BOJ_PATH/$algorithmName/${number}_$title.kt"
+private fun addProblemFile(contents: String, algorithmName: String?, number: String, title: String) {
+    val lowerAlgorithmName = algorithmName?.lowercase() ?: "etc"
+    val path = "$BOJ_PATH/$lowerAlgorithmName/${number}_$title.kt"
     File(path).appendText(contents)
 }
 
@@ -31,4 +31,14 @@ private fun extractDetails(text: String): Pair<String, String> {
     val regex = Regex("\\((.*?)\\)")
     val details = regex.findAll(text).map { it.groupValues[1] }.toList()
     return details[0] to details[1]
+}
+
+private fun addSolvedAlgorithm(algorithmName: String?) {
+    algorithmName ?: return
+    File(SOLVED_ALGORITHM_FILE_PATH).appendText("${algorithmName}\n")
+    removeSolvingAlgorithm()
+}
+
+private fun removeSolvingAlgorithm() {
+    File(SOLVING_ALGORITHM_FILE_PATH).writeText("")
 }
