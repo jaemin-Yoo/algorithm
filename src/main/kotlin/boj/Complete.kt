@@ -3,6 +3,8 @@ package boj
 import java.io.File
 
 private const val NOTE_FILE_NAME = "Note.kt"
+private const val TEST_FILE_NAME = "Test.kt"
+private const val TEST_FILE_PATH = "$BOJ_PATH/$TEST_FILE_NAME"
 
 fun main() {
     complete()
@@ -18,13 +20,15 @@ private fun complete() {
     addProblemFile(noteContents, algorithmName, number, title)
     addNoteFile()
     addSolvedAlgorithm(algorithmName)
+    resetTestFile()
     println("[${algorithmName ?: "etc"}] ${number}_$title.kt")
 }
 
 private fun addProblemFile(contents: String, algorithmName: String?, number: String, title: String) {
     val lowerAlgorithmName = algorithmName?.lowercase() ?: "etc"
+    val newContents = contents.replace("package boj", "package boj.$lowerAlgorithmName")
     val path = "$BOJ_PATH/$lowerAlgorithmName/${number}_$title.kt"
-    File(path).appendText(contents)
+    File(path).appendText(newContents)
 }
 
 private fun extractDetails(text: String): Pair<String, String> {
@@ -41,4 +45,14 @@ private fun addSolvedAlgorithm(algorithmName: String?) {
 
 private fun removeSolvingAlgorithm() {
     File(SOLVING_ALGORITHM_FILE_PATH).writeText("")
+}
+
+private fun resetTestFile() {
+    val contents = """package boj
+
+fun main() = with(System.`in`.bufferedReader()) {
+
+    close()
+}"""
+    File(TEST_FILE_PATH).writeText(contents)
 }
