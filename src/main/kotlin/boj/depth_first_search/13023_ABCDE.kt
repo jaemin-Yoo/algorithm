@@ -3,7 +3,7 @@ package boj.depth_first_search
 /**
  * 문제 번호: (13023)
  * 문제 이름: (ABCDE)
- * 소요 시간(분): ()
+ * 소요 시간(분): (15)
  */
 
 private const val MAX_SIZE = 5
