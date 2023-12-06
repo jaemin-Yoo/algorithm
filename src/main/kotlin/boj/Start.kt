@@ -66,8 +66,10 @@ fun main() = with(System.`in`.bufferedReader()) {
     File(path).writeText(contents)
 }
 
+private const val GOLD_TIER = "11%2C12%2C13%2C14%2C15"
+
 private fun getBOJUrl(number: Int, page: Int = 1) =
-    "https://www.acmicpc.net/problemset?sort=ac_desc&algo=$number&algo_if=and&page=$page"
+    "https://www.acmicpc.net/problemset?sort=ac_desc&tier=$GOLD_TIER&algo=$number&algo_if=and&page=$page"
 
 enum class Algorithm(val url: String) {
     BRUTE_FORCING(getBOJUrl(125, 2)),
