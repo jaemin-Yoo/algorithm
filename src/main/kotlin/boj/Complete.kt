@@ -18,9 +18,9 @@ private fun complete() {
     val (number, title) = extractDetails(noteContents)
 
     addProblemFile(noteContents, algorithmName, number, title)
-    addNoteFile()
     addSolvedAlgorithm(algorithmName)
     resetTestFile()
+    addNoteFile()
     println("[${algorithmName ?: "etc"}] ${number}_$title.kt")
 }
 
@@ -28,6 +28,12 @@ private fun addProblemFile(contents: String, algorithmName: String?, number: Str
     val lowerAlgorithmName = algorithmName?.lowercase() ?: "etc"
     val newContents = contents.replace("package boj", "package boj.$lowerAlgorithmName")
     val path = "$BOJ_PATH/$lowerAlgorithmName/${number}_$title.kt"
+    val dirPath = "$BOJ_PATH/$lowerAlgorithmName"
+    val directory = File(dirPath)
+    if (!directory.exists()) {
+        directory.mkdir()
+    }
+
     File(path).appendText(newContents)
 }
 
