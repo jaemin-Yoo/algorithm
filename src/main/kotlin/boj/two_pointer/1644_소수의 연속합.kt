@@ -9,33 +9,43 @@ package boj.two_pointer
 fun main() = with(System.`in`.bufferedReader()) {
     val n = readLine().toInt()
     val list = getPrimeList(n)
-    var start = 0
-    var end = 0
-
     if (list.isEmpty()) {
         println(0)
-    } else {
-        var sum = list[0]
-        var result = 0
-        while (start <= end) {
-            if (n == sum) {
-                result += 1
-            }
+        return
+    }
 
-            if (n >= sum) {
+    val result = twoPointer(n, list)
+    println(result)
+
+    close()
+}
+
+private fun twoPointer(n: Int, list: List<Int>): Int {
+    var (start, end, sum, count) = arrayOf(0, 0, 2, 0)
+
+    while (end < list.size) {
+        when {
+            sum < n -> {
                 end += 1
-                if (end > list.lastIndex) break
-
-                sum += list[end]
-            } else {
+                if (end < list.size) {
+                    sum += list[end]
+                }
+            }
+            sum > n -> {
                 sum -= list[start]
                 start += 1
             }
+            else -> {
+                count += 1
+                end += 1
+                if (end < list.size) {
+                    sum += list[end]
+                }
+            }
         }
-        println(result)
     }
 
-    close()
+    return count
 }
 
 private fun getPrimeList(n: Int): List<Int> {
