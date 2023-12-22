@@ -12,6 +12,9 @@ fun main() {
 
 private fun complete() {
     val algorithmName = File(SOLVING_ALGORITHM_FILE_PATH).readLines().lastOrNull()
+    if (!Algorithm.values().any { it.name == algorithmName }) {
+        throw Exception("존재하지 않는 알고리즘입니다.")
+    }
 
     val notePath = "$BOJ_PATH/$NOTE_FILE_NAME"
     val noteContents = File(notePath).readText()
@@ -67,7 +70,6 @@ fun main() = with(System.`in`.bufferedReader()) {
 
 TODO
 
-2. enum에 알고리즘 정의, 정의되어 있지 않은 알고리즘이면 오류 발생
 3. 이미 푼 알고리즘은 추가 안하기
 
  */
