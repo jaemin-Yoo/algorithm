@@ -48,7 +48,11 @@ private fun extractDetails(text: String): Pair<String, String> {
 
 private fun addSolvedAlgorithm(algorithmName: String?) {
     algorithmName ?: return
-    File(SOLVED_ALGORITHM_FILE_PATH).appendText("${algorithmName}\n")
+    val solvedFile = File(SOLVED_ALGORITHM_FILE_PATH)
+    val solvedAlgorithms = solvedFile.readLines()
+    if (algorithmName !in solvedAlgorithms) {
+        File(SOLVED_ALGORITHM_FILE_PATH).appendText("${algorithmName}\n")
+    }
     removeSolvingAlgorithm()
 }
 
@@ -65,11 +69,3 @@ fun main() = with(System.`in`.bufferedReader()) {
 }"""
     File(TEST_FILE_PATH).writeText(contents)
 }
-
-/*
-
-TODO
-
-3. 이미 푼 알고리즘은 추가 안하기
-
- */
