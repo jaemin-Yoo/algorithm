@@ -40,7 +40,7 @@ private fun addProblemFile(contents: String, algorithmName: String?, number: Str
 private fun extractDetails(text: String): Pair<String, String> {
     val regex = Regex("\\((.*?)\\)")
     val details = regex.findAll(text).map { it.groupValues[1] }.toList()
-    return details[0] to details[1]
+    return details[0] to details[1].replace("[^a-zA-Z\\d\\s]".toRegex(), "")
 }
 
 private fun addSolvedAlgorithm(algorithmName: String?) {
@@ -62,3 +62,12 @@ fun main() = with(System.`in`.bufferedReader()) {
 }"""
     File(TEST_FILE_PATH).writeText(contents)
 }
+
+/*
+
+TODO
+
+2. enum에 알고리즘 정의, 정의되어 있지 않은 알고리즘이면 오류 발생
+3. 이미 푼 알고리즘은 추가 안하기
+
+ */
