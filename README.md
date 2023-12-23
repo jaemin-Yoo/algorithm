@@ -30,3 +30,29 @@
 - 위상정렬
 - 유니온 파인드 (분리 집합)
 - 우선순위 큐
+
+## 개발 환경 셋팅
+
+### 1. SDK 설정
+`File -> Project Structure -> Project Settings -> Project`
+
+적절한 SDK 버전을 설정한다.
+
+![image](docs/img/project.png)
+
+### 2. Kotlin Sources 마킹
+
+`Project Settings -> Modules`
+
+`kotlin` 폴더를 `Sources`로 마킹하여 해당 폴더가 코틀린 폴더임을 나타낸다.
+
+![image](docs/img/modules.png)
+
+### 3. 코틀린 표준 라이브러리 추가
+
+`Project Settings -> Libraries`
+
+코틀린 표준 라이브러리를 추가한다.  
+`org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0`
+
+![image](docs/img/libraries.png)
