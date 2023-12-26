@@ -64,7 +64,7 @@ private fun resetTestFile() {
     val contents = """package boj
 
 fun main() = with(System.`in`.bufferedReader()) {
-
+    
     close()
 }"""
     File(TEST_FILE_PATH).writeText(contents)
