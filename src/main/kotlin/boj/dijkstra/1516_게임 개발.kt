@@ -1,4 +1,4 @@
-package boj.topological_sorting
+package boj.dijkstra
 
 /**
  * 문제 번호: (1516)
