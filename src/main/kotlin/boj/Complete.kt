@@ -49,6 +49,10 @@ private fun extractDetails(text: String): Pair<String, String> {
 private fun addSolvedAlgorithm(algorithmName: String?) {
     algorithmName ?: return
     val solvedFile = File(SOLVED_ALGORITHM_FILE_PATH)
+    if (!solvedFile.exists()) {
+        solvedFile.createNewFile()
+    }
+
     val solvedAlgorithms = solvedFile.readLines()
     if (algorithmName !in solvedAlgorithms) {
         File(SOLVED_ALGORITHM_FILE_PATH).appendText("${algorithmName}\n")
