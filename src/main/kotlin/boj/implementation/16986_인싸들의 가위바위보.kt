@@ -47,19 +47,6 @@ private fun bfs(graph: MutableList<List<Int>>, b: List<Int>, c: List<Int>, n: In
 
     while (q.isNotEmpty()) {
         val (p1, p2, aCount, bCount, cCount, bRound, cRound, visited) = q.poll()
-        println(
-            """
-                p1: $p1
-                p2: $p2
-                aCount: $aCount
-                bCount: $bCount
-                cCount: $cCount
-                bRound: $bRound
-                cRound: $cRound
-                visited: $visited
-            """.trimIndent()
-        )
-        println()
         if (bCount == k || cCount == k) {
             continue
         } else if (aCount == k) {
@@ -69,7 +56,7 @@ private fun bfs(graph: MutableList<List<Int>>, b: List<Int>, c: List<Int>, n: In
         if (p1 == Player.A && p2 == Player.B) {
             val x = b[bRound]
             for (i in 0 until n) {
-                if (visited and i > 0) continue
+                if (visited and 2.0.pow(i).toInt() > 0) continue
 
                 val v = visited + 2.0.pow(i).toInt()
                 when (graph[i][x - 1]) {
@@ -81,7 +68,7 @@ private fun bfs(graph: MutableList<List<Int>>, b: List<Int>, c: List<Int>, n: In
         } else if (p1 == Player.A && p2 == Player.C) {
             val x = c[cRound]
             for (i in 0 until n) {
-                if (visited and i > 0) continue
+                if (visited and 2.0.pow(i).toInt() > 0) continue
 
                 val v = visited + 2.0.pow(i).toInt()
                 when (graph[i][x - 1]) {
@@ -103,18 +90,3 @@ private fun bfs(graph: MutableList<List<Int>>, b: List<Int>, c: List<Int>, n: In
 
     return 0
 }
-
-/*
-
-방문 안한 노드 중 2 찾기.
-
-1. 그냥 무조건 이기면 됨
-2. 지는 경우 아무거나 내면 됨
-3.
-
-- 모든 경우의 수 확인
-- visited는 비트마스킹
-- 큐에 삽입
--
-
- */
