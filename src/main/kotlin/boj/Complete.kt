@@ -41,7 +41,7 @@ private fun addProblemFile(contents: String, algorithmName: String?, number: Str
 }
 
 private fun extractDetails(text: String): Pair<String, String> {
-    val regex = Regex("\\((.*?)\\)")
+    val regex = Regex("\\[(.*?)]")
     val details = regex.findAll(text).map { it.groupValues[1] }.toList()
     return details[0] to details[1].replace("[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z,.?\\d\\s]".toRegex(), "")
 }
