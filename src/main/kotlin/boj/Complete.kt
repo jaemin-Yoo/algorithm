@@ -4,7 +4,9 @@ import java.io.File
 
 private const val NOTE_FILE_NAME = "Note.kt"
 private const val TEST_FILE_NAME = "Test.kt"
+private const val UNSOLVED_PROBLEM_FILE_NAME = "UnsolvedProblem.txt"
 private const val TEST_FILE_PATH = "$BOJ_PATH/$TEST_FILE_NAME"
+private const val UNSOLVED_PROBLEM_FILE_PATH = "$RESOURCES_PATH/$UNSOLVED_PROBLEM_FILE_NAME"
 
 fun main() {
     complete()
@@ -24,6 +26,8 @@ private fun complete() {
     addProblemFile(noteContents, algorithmName, number, title)
     if (time != "x") {
         addSolvedAlgorithm(algorithmName)
+    } else {
+        addUnsolvedProblem(number)
     }
     removeSolvingAlgorithm()
     resetTestFile()
@@ -60,6 +64,15 @@ private fun addSolvedAlgorithm(algorithmName: String?) {
     val solvedAlgorithms = solvedFile.readLines()
     if (algorithmName !in solvedAlgorithms) {
         File(SOLVED_ALGORITHM_FILE_PATH).appendText("${algorithmName}\n")
+    }
+}
+
+private fun addUnsolvedProblem(number: String) {
+    val unsolvedFile = File(UNSOLVED_PROBLEM_FILE_PATH)
+    if (unsolvedFile.readText() == "") {
+        unsolvedFile.appendText(number)
+    } else {
+        unsolvedFile.appendText(",$number")
     }
 }
 
