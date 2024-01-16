@@ -18,10 +18,14 @@ private fun complete() {
 
     val notePath = "$BOJ_PATH/$NOTE_FILE_NAME"
     val noteContents = File(notePath).readText()
-    val (number, title) = extractDetails(noteContents)
+    val (number, title, time) = extractDetails(noteContents)
+    println(time)
 
     addProblemFile(noteContents, algorithmName, number, title)
-    addSolvedAlgorithm(algorithmName)
+    if (time != "x") {
+        addSolvedAlgorithm(algorithmName)
+    }
+    removeSolvingAlgorithm()
     resetTestFile()
     addNoteFile()
     println("[${algorithmName ?: "etc"}] ${number}_$title.kt")
@@ -40,10 +44,10 @@ private fun addProblemFile(contents: String, algorithmName: String?, number: Str
     File(path).appendText(newContents)
 }
 
-private fun extractDetails(text: String): Pair<String, String> {
+private fun extractDetails(text: String): Triple<String, String, String> {
     val regex = Regex("\\[(.*?)]")
     val details = regex.findAll(text).map { it.groupValues[1] }.toList()
-    return details[0] to details[1].replace("[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z,.?\\d\\s]".toRegex(), "")
+    return Triple(details[0], details[1].replace("[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z,.?\\d\\s]".toRegex(), ""), details[2])
 }
 
 private fun addSolvedAlgorithm(algorithmName: String?) {
@@ -57,7 +61,6 @@ private fun addSolvedAlgorithm(algorithmName: String?) {
     if (algorithmName !in solvedAlgorithms) {
         File(SOLVED_ALGORITHM_FILE_PATH).appendText("${algorithmName}\n")
     }
-    removeSolvingAlgorithm()
 }
 
 private fun removeSolvingAlgorithm() {
