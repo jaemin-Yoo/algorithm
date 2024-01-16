@@ -7,9 +7,9 @@ import java.net.URI
 const val SOLVED_ALGORITHM_FILE_NAME = "SolvedAlgorithm.txt"
 const val SOLVING_ALGORITHM_FILE_NAME = "SolvingAlgorithm.txt"
 const val BOJ_PATH = "src/main/kotlin/boj"
-const val ALGORITHM_DIR_PATH = "src/main/resources"
-const val SOLVED_ALGORITHM_FILE_PATH = "$ALGORITHM_DIR_PATH/$SOLVED_ALGORITHM_FILE_NAME"
-const val SOLVING_ALGORITHM_FILE_PATH = "$ALGORITHM_DIR_PATH/$SOLVING_ALGORITHM_FILE_NAME"
+const val RESOURCES_PATH = "src/main/resources"
+const val SOLVED_ALGORITHM_FILE_PATH = "$RESOURCES_PATH/$SOLVED_ALGORITHM_FILE_NAME"
+const val SOLVING_ALGORITHM_FILE_PATH = "$RESOURCES_PATH/$SOLVING_ALGORITHM_FILE_NAME"
 
 fun main() {
     start()
@@ -39,7 +39,7 @@ private fun getSolvedAlgorithms(): List<String> {
 }
 
 private fun addSolvingAlgorithm(algorithm: Algorithm) {
-    val directory = File(ALGORITHM_DIR_PATH)
+    val directory = File(RESOURCES_PATH)
     if (!directory.exists()) {
         directory.mkdir()
     }
