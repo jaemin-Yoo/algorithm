@@ -49,7 +49,7 @@ private fun addProblemFile(contents: String, algorithmName: String?, number: Str
 }
 
 private fun extractDetails(text: String): Triple<String, String, String> {
-    val regex = Regex("\\[(.*?)]")
+    val regex = Regex(": \\((.*?)\\)")
     val details = regex.findAll(text).map { it.groupValues[1] }.toList()
     return Triple(details[0], details[1].replace("[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z,.?\\d\\s]".toRegex(), ""), details[2])
 }
