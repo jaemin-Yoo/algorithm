@@ -44,7 +44,7 @@ private fun addSolvingAlgorithm(algorithm: Algorithm) {
         directory.mkdir()
     }
 
-    File(SOLVING_ALGORITHM_FILE_PATH).appendText("${algorithm.name}\n")
+    File(SOLVING_ALGORITHM_FILE_PATH).writeText(algorithm.name)
 }
 
 private fun openWebSite(algorithm: Algorithm) {
