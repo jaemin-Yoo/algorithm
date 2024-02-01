@@ -13,15 +13,11 @@ public class 개표 {
             int fCnt = n / 5;
             int dCnt = n % 5;
             StringBuilder sb = new StringBuilder();
-            for (int j = 0; j < fCnt; j++) {
-                sb.append("++++").append(" ");
-            }
+            sb.append("++++ ".repeat(fCnt));
             if (dCnt == 0) {
                 sb.deleteCharAt(sb.length() - 1);
             }
-            for (int j = 0; j < dCnt; j++) {
-                sb.append("|");
-            }
+            sb.append("|".repeat(dCnt));
             System.out.println(sb);
         }
     }
