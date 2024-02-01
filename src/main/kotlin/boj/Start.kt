@@ -94,3 +94,8 @@ enum class Algorithm(val url: String) {
     UNION_FIND(getBOJUrl(81)),
     PRIORITY_QUEUE(getBOJUrl(59))
 }
+
+/**
+ * 백준 티어 제도 도입 (맞추면 + 틀리면 -)
+ *  틀린 문제 다시 풀기 기능 추가
+ */
