@@ -1,4 +1,4 @@
-package boj.breadth_first_search
+package boj.breadth_first_search.불4179
 
 /**
  * 문제 번호: (4179)
