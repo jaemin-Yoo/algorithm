@@ -1,4 +1,4 @@
-package boj.breadth_first_search
+package boj.breadth_first_search.쉬운_최단거리14940
 
 /**
  * 문제 번호: (14940)
