@@ -1,4 +1,4 @@
-package boj.depth_first_search.깊이우선탐색2
+package boj.depth_first_search
 
 /**
  * 문제 번호: (24480)
@@ -6,7 +6,7 @@ package boj.depth_first_search.깊이우선탐색2
  * 소요 시간(분): (5)
  */
 
-var order = 1
+private var order = 1
 
 fun main(args: Array<String>) = with(System.`in`.bufferedReader()) {
     val (n, m, r) = readLine().split(" ").map { it.toInt() }
