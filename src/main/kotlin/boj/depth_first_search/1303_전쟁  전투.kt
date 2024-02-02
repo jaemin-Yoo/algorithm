@@ -9,7 +9,7 @@ package boj.depth_first_search
 private val dx = listOf(1, -1, 0, 0)
 private val dy = listOf(0, 0, 1, -1)
 
-var cnt = 1
+private var cnt = 1
 
 fun main(args: Array<String>) = with(System.`in`.bufferedReader()) {
     val (n, m) = readLine().split(" ").map { it.toInt() }
