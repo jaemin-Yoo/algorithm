@@ -73,29 +73,41 @@ fun main() = with(System.`in`.bufferedReader()) {
 }
 
 private const val GOLD_TIER = "11%2C12%2C13%2C14%2C15"
+private const val SILVER_TIER = "6%2C7%2C8%2C9%2C10"
+private const val SILVER_5 = "6"
+private const val SILVER_4 = "7"
+private const val SILVER_3 = "8"
+private const val SILVER_2 = "9"
+private const val SILVER_1 = "10"
+private const val GOLD_5 = "11"
+private const val GOLD_4 = "12"
+private const val GOLD_3 = "13"
+private const val GOLD_2 = "14"
+private const val GOLD_1 = "15"
 
-private fun getBOJUrl(number: Int, page: Int = 1) =
-    "https://www.acmicpc.net/problemset?sort=ac_desc&submit=us&tier=$GOLD_TIER&algo=$number&algo_if=and&page=$page"
+private fun getBOJUrl(number: Int, tier: String, page: Int = 1) =
+    "https://www.acmicpc.net/problemset?sort=ac_desc&submit=us&tier=$tier&algo=$number&algo_if=and&page=$page"
 
 enum class Algorithm(val url: String) {
-    BRUTE_FORCING(getBOJUrl(125, 2)),
-    DEPTH_FIRST_SEARCH(getBOJUrl(127)),
-    BREADTH_FIRST_SEARCH(getBOJUrl(126)),
-    HASHING(getBOJUrl(136)),
-    STRING(getBOJUrl(158)),
-    DYNAMIC_PROGRAMMING(getBOJUrl(25)),
-    DIJKSTRA(getBOJUrl(22)),
-    IMPLEMENTATION(getBOJUrl(102, 2)),
-    DATA_STRUCTURES(getBOJUrl(175)),
-    TWO_POINTER(getBOJUrl(80)),
-    GREEDY(getBOJUrl(33)),
-    BINARY_SEARCH(getBOJUrl(12)),
-    TOPOLOGICAL_SORTING(getBOJUrl(78)),
-    UNION_FIND(getBOJUrl(81)),
-    PRIORITY_QUEUE(getBOJUrl(59))
+    BRUTE_FORCING(getBOJUrl(125, SILVER_5)),
+    DEPTH_FIRST_SEARCH(getBOJUrl(127, SILVER_5)),
+    BREADTH_FIRST_SEARCH(getBOJUrl(126, SILVER_5)),
+    HASHING(getBOJUrl(136, SILVER_5)),
+    STRING(getBOJUrl(158, SILVER_5)),
+    DYNAMIC_PROGRAMMING(getBOJUrl(25, SILVER_5)),
+    DIJKSTRA(getBOJUrl(22, SILVER_5)),
+    IMPLEMENTATION(getBOJUrl(102, SILVER_5)),
+    DATA_STRUCTURES(getBOJUrl(175, SILVER_5)),
+    TWO_POINTER(getBOJUrl(80, SILVER_5)),
+    GREEDY(getBOJUrl(33, SILVER_5)),
+    BINARY_SEARCH(getBOJUrl(12, SILVER_5)),
+    TOPOLOGICAL_SORTING(getBOJUrl(78, SILVER_5)),
+    UNION_FIND(getBOJUrl(81, SILVER_5)),
+    PRIORITY_QUEUE(getBOJUrl(59, SILVER_5))
 }
 
 /**
  * 백준 티어 제도 도입 (맞추면 + 틀리면 -)
  *  틀린 문제 다시 풀기 기능 추가
+ *  data class 중복 문제 해결 (패키지 정의)
  */
