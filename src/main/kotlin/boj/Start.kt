@@ -66,7 +66,7 @@ fun addNoteFile() {
  */
 
 fun main() = with(System.`in`.bufferedReader()) {
-
+    
     close()
 }"""
     File(path).writeText(contents)
@@ -89,21 +89,21 @@ private fun getBOJUrl(number: Int, tier: String, page: Int = 1) =
     "https://www.acmicpc.net/problemset?sort=ac_desc&submit=us&tier=$tier&algo=$number&algo_if=and&page=$page"
 
 enum class Algorithm(val url: String) {
-    BRUTE_FORCING(getBOJUrl(125, SILVER_5)),
-    DEPTH_FIRST_SEARCH(getBOJUrl(127, SILVER_5)),
-    BREADTH_FIRST_SEARCH(getBOJUrl(126, SILVER_5)),
-    HASHING(getBOJUrl(136, SILVER_5)),
-    STRING(getBOJUrl(158, SILVER_5)),
-    DYNAMIC_PROGRAMMING(getBOJUrl(25, SILVER_5)),
-    DIJKSTRA(getBOJUrl(22, SILVER_5)),
+    BRUTE_FORCING(getBOJUrl(125, SILVER_2)),
+    DEPTH_FIRST_SEARCH(getBOJUrl(127, GOLD_5)),
+    BREADTH_FIRST_SEARCH(getBOJUrl(126, SILVER_1)),
+    HASHING(getBOJUrl(136, SILVER_2)),
+    STRING(getBOJUrl(158, SILVER_2)),
+    DYNAMIC_PROGRAMMING(getBOJUrl(25, SILVER_2)),
+    DIJKSTRA(getBOJUrl(22, GOLD_3)),
     IMPLEMENTATION(getBOJUrl(102, SILVER_5)),
-    DATA_STRUCTURES(getBOJUrl(175, SILVER_5)),
-    TWO_POINTER(getBOJUrl(80, SILVER_5)),
-    GREEDY(getBOJUrl(33, SILVER_5)),
+    DATA_STRUCTURES(getBOJUrl(175, SILVER_2)),
+    TWO_POINTER(getBOJUrl(80, SILVER_2)),
+    GREEDY(getBOJUrl(33, SILVER_2)),
     BINARY_SEARCH(getBOJUrl(12, SILVER_5)),
-    TOPOLOGICAL_SORTING(getBOJUrl(78, SILVER_5)),
-    UNION_FIND(getBOJUrl(81, SILVER_5)),
-    PRIORITY_QUEUE(getBOJUrl(59, SILVER_5))
+    TOPOLOGICAL_SORTING(getBOJUrl(78, GOLD_4)),
+    UNION_FIND(getBOJUrl(81, GOLD_4)),
+    PRIORITY_QUEUE(getBOJUrl(59, GOLD_4))
 }
 
 /**
