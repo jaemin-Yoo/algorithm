@@ -65,9 +65,8 @@ fun addNoteFile() {
  * 소요 시간(분): ()
  */
 
-fun main() = with(System.`in`.bufferedReader()) {
+fun main() = System.`in`.bufferedReader().use { br ->
     
-    close()
 }"""
     File(path).writeText(contents)
 }
@@ -96,11 +95,11 @@ enum class Algorithm(val url: String) {
     STRING(getBOJUrl(158, SILVER_2)),
     DYNAMIC_PROGRAMMING(getBOJUrl(25, SILVER_2)),
     DIJKSTRA(getBOJUrl(22, GOLD_3)),
-    IMPLEMENTATION(getBOJUrl(102, SILVER_5)),
+    IMPLEMENTATION(getBOJUrl(102, SILVER_2)),
     DATA_STRUCTURES(getBOJUrl(175, SILVER_2)),
     TWO_POINTER(getBOJUrl(80, SILVER_2)),
-    GREEDY(getBOJUrl(33, SILVER_2)),
-    BINARY_SEARCH(getBOJUrl(12, SILVER_5)),
+    GREEDY(getBOJUrl(33, SILVER_1)),
+    BINARY_SEARCH(getBOJUrl(12, SILVER_2)),
     TOPOLOGICAL_SORTING(getBOJUrl(78, GOLD_4)),
     UNION_FIND(getBOJUrl(81, GOLD_4)),
     PRIORITY_QUEUE(getBOJUrl(59, GOLD_4))
