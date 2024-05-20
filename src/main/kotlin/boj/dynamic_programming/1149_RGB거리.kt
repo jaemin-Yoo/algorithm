@@ -24,5 +24,5 @@ fun main() = System.`in`.bufferedReader().use { br ->
         dp[idx] = intArrayOf(mr, mg, mb)
     }
 
-    println(dp[n - 1].min())
+    println(dp[n - 1].minOf { it })
 }
