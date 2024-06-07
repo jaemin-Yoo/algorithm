@@ -16,10 +16,10 @@ fun main() = System.`in`.bufferedReader().use { br ->
     val dp = Array(n + 1) { IntArray(m + 1) }
     for (i in 1 until n + 1) {
         for (j in 1 until m + 1) {
-            if (a[i - 1] == b[j - 1]) {
-                dp[i][j] = dp[i - 1][j - 1] + 1
+            dp[i][j] = if (a[i - 1] == b[j - 1]) {
+                dp[i - 1][j - 1] + 1
             } else {
-                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+                max(dp[i][j - 1], dp[i - 1][j])
             }
         }
     }
