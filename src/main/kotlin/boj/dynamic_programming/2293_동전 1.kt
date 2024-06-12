@@ -13,22 +13,12 @@ fun main() = System.`in`.bufferedReader().use { br ->
         val c = br.readLine().toInt()
         coins.add(c)
     }
-    val dp = Array(n) { IntArray(k + 1) }
-    dp[0][0] = 1
-    for (j in 1 until k + 1) {
-        if (j % coins[0] == 0) {
-            dp[0][j] = 1
+    val dp = IntArray(k + 1)
+    dp[0] = 1
+    coins.forEach { coin ->
+        for (i in coin until k + 1) {
+            dp[i] += dp[i - coin]
         }
     }
-
-    for (i in 1 until n) {
-        for (j in 0 until k + 1) {
-            if (j < coins[i]) {
-                dp[i][j] = dp[i - 1][j]
-            } else {
-                dp[i][j] = dp[i - 1][j] + dp[i][j - coins[i]]
-            }
-        }
-    }
-    println(dp[n - 1][k])
+    println(dp[k])
 }
