@@ -3,53 +3,50 @@ package boj;
 import java.util.*;
 
 public class Main {
+
+    private static final int[] dx = {1, -1, 0, 0};
+    private static final int[] dy = {0, 0, 1, -1};
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int d = sc.nextInt();
-        int k = sc.nextInt();
-        int c = sc.nextInt();
+        int m = sc.nextInt();
 
-        HashMap<Integer, Integer> map = new HashMap<>();
-        map.put(c, 1);
-
-        ArrayList<Integer> sushiList = new ArrayList<>();
+        int[][] graph = new int[n][m];
         for (int i = 0; i < n; i++) {
-            int sushi = sc.nextInt();
-            sushiList.add(sushi);
-        }
-
-        int count = 1;
-        for (int i = 0; i < k; i++) {
-            int sushi = sushiList.get(i);
-            if (map.containsKey(sushi)) {
-                map.put(sushi, map.get(sushi) + 1);
-            } else {
-                map.put(sushi, 1);
-                count++;
+            String s = sc.next();
+            for (int j = 0; j < m; j++) {
+                graph[i][j] = s.charAt(j) - '0';
             }
         }
 
-        int maxCount = count;
-        for (int i = 0; i < n; i++) {
-            int headSushi = sushiList.get(i);
-            if (map.get(headSushi) == 1) {
-                map.remove(headSushi);
-                count--;
-            } else {
-                map.put(headSushi, map.get(headSushi) - 1);
+        int result = bfs(graph, n, m);
+        System.out.println(result);
+    }
+
+    private static int bfs(int[][] graph, int n, int m) {
+        boolean[][] visited = new boolean[n][m];
+        Queue<int[]> q = new LinkedList<>();
+        q.add(new int[] {0, 0, 1});
+
+        while (!q.isEmpty()) {
+            int[] v = q.poll();
+            int x = v[0];
+            int y = v[1];
+            int dist = v[2];
+            if (x == n - 1 && y == m - 1) {
+                return dist;
             }
 
-            int tailSushi = sushiList.get((i + k) % n);
-            if (map.containsKey(tailSushi)) {
-                map.put(tailSushi, map.get(tailSushi) + 1);
-            } else {
-                map.put(tailSushi, 1);
-                count++;
+            for (int i = 0; i < 4; i++) {
+                int a = dx[i] + x;
+                int b = dy[i] + y;
+                if ((a >= 0 && a < n) && (b >= 0 && b < m) && graph[a][b] == 1 && !visited[a][b]) {
+                    visited[a][b] = true;
+                    q.add(new int[] {a, b, dist + 1});
+                }
             }
-
-            maxCount = Math.max(maxCount, count);
         }
-        System.out.println(maxCount);
+        return -1;
     }
 }
