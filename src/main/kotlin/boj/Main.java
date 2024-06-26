@@ -1,23 +1,37 @@
 package boj;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int h = sc.nextInt();
-        int w = sc.nextInt();
-        int n = sc.nextInt();
-        int m = sc.nextInt();
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int[] arr = new int[3];
+        while (true) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            arr[0] = Integer.parseInt(st.nextToken());
+            arr[1] = Integer.parseInt(st.nextToken());
+            arr[2] = Integer.parseInt(st.nextToken());
+            if (arr[0] == 0 && arr[1] == 0 && arr[2] == 0) {
+                break;
+            }
+            Arrays.sort(arr);
 
-        int a = 0;
-        for (int i = 0; i < h; i += n + 1) {
-            a++;
+            String answer;
+            int side1 = arr[0];
+            int side2 = arr[1];
+            int side3 = arr[2];
+            if (side3 >= side1 + side2) {
+                answer = "Invalid";
+            } else if (side1 == side2 && side2 == side3) {
+                answer = "Equilateral";
+            } else if (side1 == side2 || side2 == side3) {
+                answer = "Isosceles";
+            } else {
+                answer = "Scalene";
+            }
+            System.out.println(answer);
         }
-        int b = 0;
-        for (int i = 0; i < w; i += m + 1) {
-            b++;
-        }
-        System.out.println(a * b);
     }
 }
