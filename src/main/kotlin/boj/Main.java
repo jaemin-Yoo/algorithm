@@ -8,29 +8,32 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(st.nextToken());
-        int k = Integer.parseInt(st.nextToken());
+        int n = Integer.parseInt(br.readLine());
 
-        int[][] medals = new int[n + 1][3];
+        int[][] arr = new int[n][2];
         for (int i = 0; i < n; i++) {
-            st = new StringTokenizer(br.readLine());
-            int country = Integer.parseInt(st.nextToken());
-            int gold = Integer.parseInt(st.nextToken());
-            int silver = Integer.parseInt(st.nextToken());
-            int bronze = Integer.parseInt(st.nextToken());
-
-            medals[country] = new int[]{gold, silver, bronze};
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int w = Integer.parseInt(st.nextToken());
+            int h = Integer.parseInt(st.nextToken());
+            arr[i][0] = w;
+            arr[i][1] = h;
         }
 
-        int rank = 1;
-        for (int i = 1; i < n + 1; i++) {
-            if (i != k) {
-                if ((medals[i][0] > medals[k][0]) || (medals[i][0] == medals[k][0] && medals[i][1] > medals[k][1]) || (medals[i][0] == medals[k][0] && medals[i][1] == medals[k][1] && medals[i][2] > medals[k][2])) {
-                    rank++;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            int rank = 1;
+            for (int j = 0; j < n; j++) {
+                if (i != j) {
+                    if (arr[i][0] < arr[j][0] && arr[i][1] < arr[j][1]) {
+                        rank += 1;
+                    }
                 }
             }
+            sb.append(rank);
+            if (i < n - 1) {
+                sb.append(" ");
+            }
         }
-        System.out.println(rank);
+        System.out.println(sb);
     }
 }
