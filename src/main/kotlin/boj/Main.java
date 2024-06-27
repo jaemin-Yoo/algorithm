@@ -7,59 +7,31 @@ import java.util.*;
 
 public class Main {
 
-    private final static char[] vowels = {'a', 'e', 'i', 'o', 'u'};
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
-        while (true) {
-            String password = br.readLine();
-            if (password.equals("end")) {
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        String type = st.nextToken();
+
+        HashSet<String> set = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            st = new StringTokenizer(br.readLine());
+            String name = st.nextToken();
+            set.add(name);
+        }
+
+        int answer = 0;
+        switch (type) {
+            case "Y":
+                answer = set.size();
                 break;
-            }
-
-            if (isValid(password)) {
-                sb.append(String.format("<%s> is acceptable.\n", password));
-            } else {
-                sb.append(String.format("<%s> is not acceptable.\n", password));
-            }
+            case "F":
+                answer = set.size() / 2;
+                break;
+            case "O":
+                answer = set.size() / 3;
+                break;
         }
-        System.out.println(sb);
-    }
-
-    private static boolean isValid(String word) {
-        char prev = ' ';
-        int vowelCnt = 0;
-        int consonantCnt = 0;
-        boolean containsVowel = false;
-        for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            if (c == prev && c != 'e' && c != 'o') {
-                return false;
-            }
-            prev = c;
-
-            boolean isVowel = false;
-            for (char vowel : vowels) {
-                if (c == vowel) {
-                    isVowel = true;
-                    containsVowel = true;
-                    break;
-                }
-            }
-            if (isVowel) {
-                vowelCnt++;
-                consonantCnt = 0;
-            } else {
-                consonantCnt++;
-                vowelCnt = 0;
-            }
-
-            if (vowelCnt == 3 || consonantCnt == 3) {
-                return false;
-            }
-        }
-
-        return containsVowel;
+        System.out.println(answer);
     }
 }
