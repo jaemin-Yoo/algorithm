@@ -3,42 +3,28 @@ package boj.implementation
 /**
  * 문제 번호: (1205)
  * 문제 이름: (등수 구하기)
- * 소요 시간(분): (25)
+ * 소요 시간(분): (11)
  */
 
-import java.util.PriorityQueue
 import kotlin.math.min
 
-fun main() = with(System.`in`.bufferedReader()) {
-    val (n, score, p) = readLine().split(" ").map { it.toInt() }
-    if (n == 0) {
-        println(1)
-        return@with
-    }
-    val scores = readLine().split(" ").map { it.toInt() }
-    val pq = PriorityQueue<Int>(reverseOrder())
+fun main() = System.`in`.bufferedReader().use { br ->
+    val (n, score, p) = br.readLine().split(' ').map { it.toInt() }
+
     var rank = 1
-    for (i in 0 until min(n, p)) {
-        val s = scores[i]
-        pq.add(s)
-    }
-    pq.add(score)
-
-    var result = -1
-    while (pq.isNotEmpty()) {
-        val x = pq.poll()
-        val r = rank
-        while (x == pq.peek()) {
-            pq.poll()
-            rank++
-        }
-        if (x == score && rank <= p) {
-            result = r
-            break
+    if (n > 0) {
+        val scores = br.readLine().split(' ').map { it.toInt() }
+        for (i in 0 until min(n, p)) {
+            if (scores[i] > score) {
+                rank++
+            } else {
+                break
+            }
         }
 
-        rank++
+        if (n >= p && scores[p - 1] >= score) {
+            rank = -1
+        }
     }
-    println(result)
-    close()
+    println(rank)
 }
