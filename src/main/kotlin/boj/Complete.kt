@@ -45,7 +45,7 @@ private fun addProblemFile(contents: String, algorithmName: String?, number: Str
         directory.mkdir()
     }
 
-    File(path).appendText(newContents)
+    File(path).writeText(newContents)
 }
 
 private fun extractDetails(text: String): Triple<String, String, String> {
