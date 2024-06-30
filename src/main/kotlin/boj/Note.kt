@@ -6,7 +6,6 @@ package boj
  * 소요 시간(분): ()
  */
 
-fun main() = with(System.`in`.bufferedReader()) {
-
-    close()
+fun main() = System.`in`.bufferedReader().use { br ->
+    
 }

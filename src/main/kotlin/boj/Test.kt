@@ -1,6 +1,5 @@
 package boj
 
-fun main() = with(System.`in`.bufferedReader()) {
-    
-    close()
+fun main() = System.`in`.bufferedReader().use { br ->
+
 }
