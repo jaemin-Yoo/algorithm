@@ -83,9 +83,8 @@ private fun removeSolvingAlgorithm() {
 private fun resetTestFile() {
     val contents = """package boj
 
-fun main() = with(System.`in`.bufferedReader()) {
+fun main() = System.`in`.bufferedReader().use { br ->
     
-    close()
 }"""
     File(TEST_FILE_PATH).writeText(contents)
 }
