@@ -3,24 +3,25 @@ package boj.hashing
 /**
  * 문제 번호: (22233)
  * 문제 이름: (가희와 키워드)
- * 소요 시간(분): (7)
+ * 소요 시간(분): (8)
  */
 
-fun main() = with(System.`in`.bufferedReader()) {
-    val (n, m) = readLine().split(" ").map { it.toInt() }
+fun main() = System.`in`.bufferedReader().use { br ->
+    val (n, m) = br.readLine().split(' ').map { it.toInt() }
     val map = HashMap<String, Boolean>()
     repeat(n) {
-        val keyword = readLine()
-        map[keyword] = true
+        val s = br.readLine()
+        map[s] = true
     }
+    val sb = StringBuilder()
     repeat(m) {
-        val keywords = readLine().split(",")
-        keywords.forEach { keyword ->
-            if (map.containsKey(keyword)) {
-                map.remove(keyword)
+        val arr = br.readLine().split(',')
+        arr.forEach { s ->
+            if (map.containsKey(s)) {
+                map.remove(s)
             }
         }
-        println(map.size)
+        sb.appendLine(map.size)
     }
-    close()
+    print(sb)
 }
