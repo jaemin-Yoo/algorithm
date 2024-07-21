@@ -3,43 +3,33 @@ package boj.data_structures
 /**
  * 문제 번호: (1406)
  * 문제 이름: (에디터)
- * 소요 시간(분): (x)
+ * 소요 시간(분): (17)
  */
 
-fun main() = with(System.`in`.bufferedReader()) {
-    val s = readLine()
-    val m = readLine().toInt()
+fun main() = System.`in`.bufferedReader().use { br ->
+    val s = br.readLine()
+    val n = br.readLine().toInt()
     val s1 = ArrayDeque<Char>()
     val s2 = ArrayDeque<Char>()
-    for (c in s) {
-        s1.add(c)
-    }
-    repeat(m) {
-        val row = readLine().split(" ")
-        when (row[0][0]) {
-            'L' -> if (s1.isNotEmpty()) {
-                val c = s1.removeLast()
-                s2.add(c)
+    s.forEach { s2.add(it) }
+    repeat(n) {
+        val row = br.readLine().split(' ').map { it[0] }
+        when (row[0]) {
+            'L' -> if (s2.isNotEmpty()) {
+                s1.add(s2.removeLast())
             }
-            'D' -> if (s2.isNotEmpty()) {
-                val c = s2.removeLast()
-                s1.add(c)
+            'D' -> if (s1.isNotEmpty()) {
+                s2.add(s1.removeLast())
             }
-            'B' -> if (s1.isNotEmpty()) {
-                s1.removeLast()
+            'B' -> if (s2.isNotEmpty()) {
+                s2.removeLast()
             }
-            'P' -> s1.add(row[1][0])
+            'P' -> s2.add(row[1])
         }
     }
     while (s1.isNotEmpty()) {
-        val c = s1.removeLast()
-        s2.add(c)
+        s2.add(s1.removeLast())
     }
-    val result = StringBuilder()
-    while (s2.isNotEmpty()) {
-        val c = s2.removeLast()
-        result.append(c)
-    }
-    println(result)
-    close()
+
+    print(s2.joinToString(""))
 }
