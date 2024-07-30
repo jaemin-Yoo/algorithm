@@ -102,7 +102,8 @@ enum class Algorithm(val url: String) {
     BINARY_SEARCH(getBOJUrl(12, SILVER_2)),
     TOPOLOGICAL_SORTING(getBOJUrl(78, GOLD_4)),
     UNION_FIND(getBOJUrl(81, GOLD_4)),
-    PRIORITY_QUEUE(getBOJUrl(59, GOLD_4))
+    PRIORITY_QUEUE(getBOJUrl(59, GOLD_4)),
+    BACKTRACKING(getBOJUrl(5, GOLD_4))
 }
 
 /**
