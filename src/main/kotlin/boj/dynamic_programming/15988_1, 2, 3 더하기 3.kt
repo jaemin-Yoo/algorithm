@@ -3,24 +3,22 @@ package boj.dynamic_programming
 /**
  * 문제 번호: (15988)
  * 문제 이름: (1, 2, 3 더하기 3)
- * 소요 시간(분): (x)
+ * 소요 시간(분): (0153)
  */
 
-private const val MAX_SIZE = 1000001
-private const val MOD = 1000000009
+private const val MAX_SIZE = 1_000_000
 
-fun main() = with(System.`in`.bufferedReader()) {
-    val t = readLine().toInt()
-    val dp = LongArray(MAX_SIZE)
+fun main() = System.`in`.bufferedReader().use { br ->
+    val t = br.readLine().toInt()
+    val dp = LongArray(MAX_SIZE + 1)
     dp[1] = 1
     dp[2] = 2
     dp[3] = 4
-    for (i in 4 until MAX_SIZE) {
-        dp[i] = (dp[i - 1] + dp[i - 2] + dp[i - 3]) % MOD
+    for (i in 4 until MAX_SIZE + 1) {
+        dp[i] = (dp[i - 1] + dp[i - 2] + dp[i - 3]) % 1_000_000_009
     }
     repeat(t) {
-        val n = readLine().toInt()
+        val n = br.readLine().toInt()
         println(dp[n])
     }
-    close()
 }
