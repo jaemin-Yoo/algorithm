@@ -103,7 +103,8 @@ enum class Algorithm(val url: String) {
     TOPOLOGICAL_SORTING(getBOJUrl(78, GOLD_4)),
     UNION_FIND(getBOJUrl(81, GOLD_4)),
     PRIORITY_QUEUE(getBOJUrl(59, GOLD_4)),
-    BACKTRACKING(getBOJUrl(5, GOLD_4))
+    BACKTRACKING(getBOJUrl(5, GOLD_4)),
+    PREFIX_SUM(getBOJUrl(139, SILVER_3))
 }
 
 /**
