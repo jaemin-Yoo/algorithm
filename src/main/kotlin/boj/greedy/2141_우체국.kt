@@ -6,29 +6,25 @@ package boj.greedy
  * 소요 시간(분): (x)
  */
 
-fun main() = with(System.`in`.bufferedReader()) {
-    val n = readLine().toInt()
-    val village = mutableListOf<Pair<Int, Int>>()
-    var pCount = 0L
-    repeat(n) {
-        val (x, a) = readLine().split(" ").map { it.toInt() }
-        village.add(x to a)
-        pCount += a
-    }
-    village.sortBy { it.first }
+import kotlin.math.ceil
 
-    var cnt = 0L
-    pCount = if (pCount % 2 != 0L) {
-        pCount + 1
-    } else {
-        pCount
+fun main() = System.`in`.bufferedReader().use { br ->
+    val n = br.readLine().toInt()
+    val villages = mutableListOf<Pair<Int, Int>>()
+    var total = 0L
+    repeat(n) {
+        val (v, count) = br.readLine().split(' ').map { it.toInt() }
+        villages.add(v to count)
+        total += count
     }
-    for ((x, a) in village) {
-        cnt += a
-        if (cnt >= pCount / 2) {
-            println(x)
+    villages.sortWith(compareBy { it.first })
+
+    var temp = 0L
+    for ((v, count) in villages) {
+        temp += count
+        if (temp >= ceil(total / 2.0)) {
+            print(v)
             break
         }
     }
-    close()
 }
